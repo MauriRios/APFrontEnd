@@ -1,15 +1,24 @@
-
 <div class="card_header shadow-sm">
-    <img class="img_banner shadow-sm" src="../assets/img/iex.jpg" alt="banner"/>
-    <img src="../assets/img/20200307_211546.jpg" alt="Perfil" class="img_perfil shadow-sm"/>
-   <div class="card_header_text">
-     
-     <a id="edit_perfil" class="btn p-0"><i class="fa-solid fa-pen edit-header"></i></a>
-       <div>
-         <h1 id="nombre">Mauricio O. Rios</h1>
-         <p id="puesto">Programador Web Full Stack</p>
-         <p id="provincia-pais">Buenos Aires (Argentina) <a href="https://www.linkedin.com/in/mauricio-osvaldo-rios-60b99116a/" target="_blank">Contacto</a></p>
-        </div>
-      
-     </div>
- </div>
+  <img class="img_banner shadow-sm" src="../assets/img/iex.jpg" alt="banner" />
+  <img src="{{ persona.img }}" alt="Perfil" class="img_perfil shadow-sm" />
+  <div class="card_header_text">
+    <button  
+    class="edit-header btn"
+    data-bs-toggle="modal"
+    data-bs-target="#perfilModal"
+    ><i class="fa-solid fa-pen"></i
+    ></button>
+  
+    <div>
+      <h1>{{ persona.nombreApellido }}</h1>
+      <p>{{ persona.puesto }}</p>
+      <p>
+        {{ persona.paisCiudad }}
+        <a
+          href="https://www.linkedin.com/in/mauricio-osvaldo-rios-60b99116a/"
+          target="_blank"
+          >Contacto</a>
+      </p>
+    </div>
+  </div>
+</div>

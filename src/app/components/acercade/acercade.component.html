@@ -1,30 +1,38 @@
-<div class="card_acerca shadow-sm">
-  <div class="acerca_de">
-    <div>
-      <h2>Acerca de</h2>
-      <span id="acercade_text">
-        Programador Web Full Stack jr, con conocimientos de testing,
-        metodologias agiles, scrum. Argentino, amante de la tecnologia y el
-        gaming
-      </span>
+<div class="container-cards shadow-sm">
+  <div class="row" *ngFor="let acercaDe of acercaDe">
+    <div class="col-8 col-sm-3 col-lg-11 mb-3">
+      <h2>Acerca De</h2>
     </div>
-  </div>
-  <div class="stack_area">
-    <div>
-      <h3 class="mt-2" >Stack Tecnologico</h3>
+    <div class="col-4 col-sm-9 col-lg-1 ">
+
     </div>
-    <div>
-      <p
-        >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora
-        explicabo dolore exercitationem, ea totam ducimus. Omnis, animi alias
-        inventore provident eos quaerat rerum distinctio nemo impedit at
-        voluptatem, facere perferendis?</p
-      >
+    <div class="col-9 col-sm-7 col-lg-11 ">
+      <p>{{acercaDe.miInfo}}</p>
     </div>
+    <div class="col-3 col-sm-2 col-lg-1">
+
+      <a class="btn gap-1"
+      data-bs-toggle="modal"
+      data-bs-target="#acercaDeModal"
+   ><i class="fa-solid fa-pen"></i></a>
+  
+   <a class="btn gap-1"
+      data-bs-toggle="modal"
+      data-bs-target="#EliminarModal"
+   ><i class="fa-solid fa-eraser"></i></a>
+    </div>
+    <div class="col-8 mb-3 mt-3">
+      <h3>Stack Tecnologico</h3>
+    </div>
+    <div class="col-4">
+
+    </div>
+    <div class="col-9">
+      <p>
+        {{acercaDe.stackInfo}}
+      </p>
+    </div>
+
   </div>
-  <div class="stack_edit d-flex"></div>
-  <div class="acerca_edit justify-content-right d-flex gap-2">
-    <a class="btn p-0"><i class="fa-solid fa-pen"></i></a>
-    <a class="btn p-0"><i class="fa-solid fa-eraser"></i></a>
-  </div>
+
 </div>

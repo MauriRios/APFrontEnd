@@ -1,13 +1,37 @@
-<div class="container_educacion shadow-sm">
-    <div class="educacion_titulo"><h2>Eduacion</h2></div>
-    <div class="educacion_icono"><img class="img_argentinaprograma" src="../assets/img\APLogo-20-20.png"
-      alt="Argentina Programa" /></div>
-    <div class="educacion_text"><h3>Argentina Programa</h3>
-      <p>Programador Web Full Stack jr</p>
-      <p>2021 - 2022</p></div>
-    <div class="eduacion_edit d-flex gap-2">
-      <a class="btn p-0"><i class="fa-solid fa-plus"></i></a>
-      <a class="btn p-0"><i class="fa-solid fa-pen"></i></a>
-      <a class="btn p-0"><i class="fa-solid fa-eraser"></i></a>
+ <div class="container-cards shadow-sm" >
+    <div class="row">
+      <div class="col-8 col-sm-3 mb-4 col-lg-2">
+        <h2>Educacion</h2>
+      </div>
+      <div class="col-4 col-sm-9 col-lg-10">
+        <a class="btn p-0">
+          <i class="fa-solid fa-plus"></i></a>
+      </div>
     </div>
+
+    <div class="row mb-3 " *ngFor="let educacion of educacion">
+      <div class="col-4 col-sm-3 col-lg-2 text-center">
+        <img class="logo-img bg-black img-fluid" src="{{educacion.img}}"/>
+      </div>
+
+      <div class="col-5 col-sm-7 col-lg-9 mb-3">
+        <h3 class="mb-3">{{educacion.institucion}}</h3>
+        <p class="mb-3">{{educacion.titulo}}</p>
+        <p class="mb-3">{{educacion.periodoEstudio}}</p>
+      </div>
+
+      <div class="col-3 col-sm-2 col-lg-1">
+
+      <a class="btn gap-1"
+         data-bs-toggle="modal"
+         data-bs-target="#educacionModal"
+      ><i class="fa-solid fa-pen"></i></a>
+
+      <a class="btn gap-1"
+         data-bs-toggle="modal"
+         data-bs-target="#EliminarModal"
+      ><i class="fa-solid fa-eraser"></i></a>
+      </div>
+    </div>
+
   </div>

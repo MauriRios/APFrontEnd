@@ -1,12 +1,38 @@
-<div class="container_experiencia shadow-sm">
-    <div class="experiencia_titulo"><h2>Experiencia</h2></div>
-    <div class="experiencia_icono"><img class="img_utest" src="../assets/img/uTestLogoNav.png" alt="Utest"></div>
-    <div class="experiencia_text">            <h3>Utest</h3>
-      <p>QA Tester manual jr</p>
-      <p>Julio 2021 - Actualiad</p></div>
-    <div class="experiencia_edit d-flex gap-2">
-      <a class="btn p-0"><i class="fa-solid fa-plus"></i></a>
-      <a class="btn p-0"><i class="fa-solid fa-pen"></i></a>
-      <a class="btn p-0"><i class="fa-solid fa-eraser"></i></a>
+<div class="container-cards shadow-sm" >
+    <div class="row">
+      <div class="col-8 col-sm-3 col-lg-2 mb-4 ">
+        <h2>Experiencia</h2>
+      </div>
+      <div class="col-4 col-sm-9 col-lg-10">
+        <a class="btn p-0">
+          <i class="fa-solid fa-plus"></i></a>
+      </div>
     </div>
+
+    <div class="row mb-3 " *ngFor="let exp of experiencia">
+      <div class="col-4 col-sm-3 col-lg-2 text-center">
+        <img class="logo-exp img-fluid" src="{{exp.img}}"/>
+      </div>
+
+      <div class="col-5 col-sm-7 col-lg-9 ">
+        <h3 class="mb-3">{{exp.empresa}}</h3>
+        <p class="mb-3">{{exp.puesto}}</p>
+        <p>{{exp.periodoTrabajado}}</p>
+      </div>
+
+      <div class="col-3 col-sm-2 col-lg-1">
+
+        <a class="btn gap-1"
+        data-bs-toggle="modal"
+        data-bs-target="#experienciaModal"
+     ><i class="fa-solid fa-pen"></i></a>
+
+     <a class="btn gap-1"
+        data-bs-toggle="modal"
+        data-bs-target="#EliminarModal"
+     ><i class="fa-solid fa-eraser"></i></a>
+
+      </div>
+    </div>
+
   </div>
