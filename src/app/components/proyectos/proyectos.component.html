@@ -1,17 +1,31 @@
-<div class="container_proyectos">
+<div class="container-cards shadow-sm">
     <div class="row">
-      <div class="col">
+      <div class="col-8 col-sm-3">
         <h2>Proyectos</h2>
       </div>
-      <div class="row">
+      <div class="col-4 col-sm-9">
+        <a class="btn p-0">
+          <i class="fa-solid fa-plus"></i></a>
+      </div>
+
+      <div class="row" *ngFor="let proyect of proyecto">
         <div class="col-9 col-sm-11" >
-          <h3><a href="#">Argentina Programa</a></h3>
-          <p class="fs-7">Desarrollo de mi portfolio personal, basado en Angular y utilizando Bootstrap </p>
+          <h3><a href="#">{{proyect.tituloProyecto}}</a></h3>
+          <p class="fs-7">{{proyect.descripcionProyecto}}</p>
         </div>
+
         <div class="col-3 col-sm-1 d-flex gap-2 justify-content-end">
-          <a class="btn p-0"><i class="fa-solid fa-plus"></i></a>
-          <a class="btn p-0"><i class="fa-solid fa-pen"></i></a>
-          <a class="btn p-0"><i class="fa-solid fa-eraser"></i></a>
+
+          <a class="btn p-0"
+             data-bs-toggle="modal"
+             data-bs-target="#proyectosModal"
+       ><i class="fa-solid fa-pen"></i></a>
+ 
+       <a class="btn p-0"
+          data-bs-toggle="modal"
+          data-bs-target="#EliminarModal"
+       ><i class="fa-solid fa-eraser"></i></a>
+ 
         </div>
       </div>
     </div>
