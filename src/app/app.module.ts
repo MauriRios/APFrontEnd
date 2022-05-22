@@ -12,6 +12,8 @@ import { ExperienciaComponent } from './components/experiencia/experiencia.compo
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ButtonsComponent } from './components/buttons/buttons.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -30,7 +32,8 @@ import { ButtonsComponent } from './components/buttons/buttons.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

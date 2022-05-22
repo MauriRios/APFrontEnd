@@ -18,4 +18,11 @@ persona: persona = new persona("", "", "", "");
     this.personaService.getPersona().subscribe(data => {this.persona = data})
   }
 
+  Editar(persona:persona){
+    this.personaService.EditPersona( persona ).subscribe
+    (data => {this.persona = data})
+
+    console.log( this.persona )
+  }
+
 }

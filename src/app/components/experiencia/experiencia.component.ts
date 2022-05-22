@@ -10,8 +10,10 @@ import { ExperienciaService } from 'src/app/service/experiencia.service';
 })
 export class ExperienciaComponent implements OnInit {
 
-  //experiencia: experiencia = new experiencia("","","","");
-  experiencia: experiencia[] = [];
+ experiencia2: experiencia = new experiencia(0,"","","","");
+ experiencia: experiencia [] = [];
+  
+ 
 
   constructor(private experienciaService: ExperienciaService) { }
 
@@ -20,4 +22,21 @@ export class ExperienciaComponent implements OnInit {
    
   }
 
-}
+  Agregar(experiencia2: experiencia){
+    this.experienciaService.createExperiencia(experiencia2).subscribe(data => {alert("Se creo piola")})
+
+
+      console.log(experiencia)
+
+  }
+
+  Eliminar(id:number){
+    console.log(id);
+    this.experienciaService.deletePorId(id).subscribe(data=> {alert("Se creo piola")});
+  }
+
+
+
+  }
+
+

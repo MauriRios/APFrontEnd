@@ -15,4 +15,15 @@ export class ExperienciaService {
   public getExperiencia(): Observable<experiencia[]>{
     return this.http.get<experiencia[]>(this.URL + 'traer');
   }
+
+  createExperiencia(experiencia2:experiencia){
+    return this.http.post<experiencia>(this.URL + 'crear', experiencia2);
+  }
+  
+  deletePorId(id: number){
+    console.log(id);
+    return this.http.delete<experiencia>(this.URL + 'borrar/' + id);
+
+  }
+
 }

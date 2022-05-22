@@ -1,9 +1,9 @@
 export class persona {
     id?: number ;
+    img?: String;
     nombreApellido: String;
     paisCiudad: String;
     puesto: String;
-    img: String;
 
     constructor(nombreApellido: String, 
                 paisCiudad: String,

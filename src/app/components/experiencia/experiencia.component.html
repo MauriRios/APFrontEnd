@@ -1,38 +1,175 @@
-<div class="container-cards shadow-sm" >
-    <div class="row">
-      <div class="col-8 col-sm-3 col-lg-2 mb-4 ">
-        <h2>Experiencia</h2>
-      </div>
-      <div class="col-4 col-sm-9 col-lg-10">
-        <a class="btn p-0">
-          <i class="fa-solid fa-plus"></i></a>
-      </div>
+<div class="container-cards shadow-sm">
+  <div class="row">
+    <div class="col-8 col-sm-3 col-lg-2 mb-4">
+      <h2>Experiencia</h2>
+    </div>
+    <div class="col-4 col-sm-9 col-lg-10">
+      <a
+        class="btn p-0"
+        data-bs-toggle="modal"
+        data-bs-target="#experienciaModalAgregar"
+      >
+        <i class="fa-solid fa-plus"></i
+      ></a>
+    </div>
+  </div>
+
+  <div class="row mb-3" *ngFor="let exp of experiencia">
+    <div class="col-4 col-sm-3 col-lg-2 text-center">
+      <img class="logo-exp img-fluid" src="{{ exp.img }}" />
     </div>
 
-    <div class="row mb-3 " *ngFor="let exp of experiencia">
-      <div class="col-4 col-sm-3 col-lg-2 text-center">
-        <img class="logo-exp img-fluid" src="{{exp.img}}"/>
-      </div>
+    <div class="col-5 col-sm-7 col-lg-9">
+      <h3 class="mb-3">{{ exp.empresa }}</h3>
+      <p class="mb-3">{{ exp.puesto }}</p>
+      <p>{{ exp.periodoTrabajado }}</p>
+    </div>
 
-      <div class="col-5 col-sm-7 col-lg-9 ">
-        <h3 class="mb-3">{{exp.empresa}}</h3>
-        <p class="mb-3">{{exp.puesto}}</p>
-        <p>{{exp.periodoTrabajado}}</p>
-      </div>
-
-      <div class="col-3 col-sm-2 col-lg-1">
-
-        <a class="btn gap-1"
+    <div class="col-3 col-sm-2 col-lg-1">
+      <a
+        class="btn gap-1"
         data-bs-toggle="modal"
         data-bs-target="#experienciaModal"
-     ><i class="fa-solid fa-pen"></i></a>
+        ><i class="fa-solid fa-pen"></i
+      ></a>
 
-     <a class="btn gap-1"
+      <a
+        class="btn gap-1"
         data-bs-toggle="modal"
-        data-bs-target="#EliminarModal"
-     ><i class="fa-solid fa-eraser"></i></a>
+        data-bs-target="#EliminarModalExperiencia"
+        ><i class="fa-solid fa-eraser"></i
+      ></a>
 
+      <button
+      (click)="Eliminar(exp.id)"
+      ><i class="fa-solid fa-eraser"></i></button>
+    </div>
+  </div>
+</div>
+
+<!--  Modal de Agregar -->
+
+<div
+  class="modal fade"
+  id="experienciaModalAgregar"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Agregar Experiencia</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="Agregar(experiencia2)">
+          <div class="form-group">
+            <label>Empresa:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Nombre y Apellido"
+              [(ngModel)]="experiencia2.empresa"
+              name="empresa"
+            />
+          </div>
+          <div class="form-group">
+            <label>Puesto y descripcion:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Puesto"
+              [(ngModel)]="experiencia2.puesto"
+              name="puesto"
+            />
+          </div>
+          <div class="form-group">
+            <label>Periodo Trabajado:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Pais y Ciudad"
+              [(ngModel)]="experiencia2.periodoTrabajado"
+              name="periodoTrabajado"
+            />
+          </div>
+          <div class="form-group">
+            <label>Imagen:</label>
+            <input
+              type="file"
+              class="form-control"
+              placeholder="Imagen de Perfil"
+              [(ngModel)]="experiencia2.img"
+              name="img"
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Guardar Cambios
+            </button>
+          </div>
+        </form>
       </div>
     </div>
-
   </div>
+
+  <!-- Eliminar Model -->
+  <div
+    class="modal fade"
+    id="EliminarModalExperiencia"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p>¿Estas seguro que quieres eliminar este contenido?</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="Eliminar(experiencia2.id)"
+          >
+            Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

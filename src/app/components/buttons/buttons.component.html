@@ -1,5 +1,5 @@
 <!-- Eliminar Model -->
-<div
+<!-- <div
   class="modal fade"
   id="EliminarModal"
   tabindex="-1"
@@ -24,14 +24,14 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Cancelar
         </button>
-        <button type="button" class="btn btn-primary">Eliminar</button>
+        <button type="button" class="btn btn-primary" >Eliminar</button>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Modal Edicion Perfil -->
-<div
+<!-- <div
   class="modal fade"
   id="perfilModal"
   tabindex="-1"
@@ -41,7 +41,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Perfil</h5>
+        <h4 class="modal-title" id="exampleModalLabel">Editar Perfil</h4>
         <button
           type="button"
           class="btn-close"
@@ -50,28 +50,65 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form action="">
-          <h5>Nombre y Apellido</h5>
-          <input type="text" placeholder="Nombre y Apellido" />
-          <h5>Puesto</h5>
-          <input type="text" placeholder="Puesto" />
-          <h5>Pais y Ciudad</h5>
-          <input type="text" placeholder="Pais y Ciudad" />
-          <h5>Imagen</h5>
-          <input type="file" placeholder="Imagen de Perfil" />
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cerrar
-        </button>
-        <button type="button" class="btn btn-primary">Guardar Cambios</button>
-      </div>
+
+        <form (ngSubmit)="Editar()">
+          <div class="form-group">
+
+            <label>Nombre y Apellido:</label>
+            <input type="text"
+             placeholder="Nombre y Apellido"
+             [(ngModel)]="persona.nombreApellido"
+             name="nombreApellido"
+             />
+          </div>
+          <div class="form-group">
+
+            <label>Puesto:</label>
+            <input type="text"
+             placeholder="Puesto"
+             [(ngModel)]="persona.puesto"
+             name="puesto"
+             />
+
+          </div>
+          <div class="form-group">
+            <label>Pais y Ciudad:</label>
+            <input type="text"
+             placeholder="Pais y Ciudad"
+             [(ngModel)]="persona.paisCiudad"
+             name="paisCiudad"
+             />
+            
+          </div>
+          <div class="form-group">
+            <label>Imagen:</label>
+            <input type="file"
+             placeholder="Imagen de Perfil"
+             [(ngModel)]="persona.img"
+             name="img"
+             />
+             
+            </div>        
+            <div class="modal-footer">
+              <button type="button" 
+              class="btn btn-secondary" 
+              data-bs-dismiss="modal">
+                Cerrar
+              </button>
+      
+              <button type="submit"
+                class="btn btn-primary"
+                >Guardar Cambios</button>
+            </div>
+
+          </form>
+          
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Acerca de Modal Edicion -->
+
 <div
   class="modal fade"
   id="acercaDeModal"
