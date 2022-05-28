@@ -11,10 +11,7 @@ import { EducacionComponent } from './components/educacion/educacion.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { SkillsComponent } from './components/skills/skills.component';
-import { ButtonsComponent } from './components/buttons/buttons.component';
 import { FormsModule } from '@angular/forms';
-
-
 
 
 @NgModule({
@@ -27,7 +24,7 @@ import { FormsModule } from '@angular/forms';
     ExperienciaComponent,
     ProyectosComponent,
     SkillsComponent,
-    ButtonsComponent
+
   ],
   imports: [
     BrowserModule,

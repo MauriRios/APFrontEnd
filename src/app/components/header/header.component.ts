@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { persona } from 'src/app/model/persona.model';
+import { Persona } from 'src/app/model/persona.model';
 import { PersonaService } from 'src/app/service/persona.service';
 
 @Component({
@@ -9,20 +9,33 @@ import { PersonaService } from 'src/app/service/persona.service';
 })
 export class HeaderComponent implements OnInit {
 
-persona: persona = new persona("", "", "", "");
+persona: Persona = new Persona(0,"", "", "", "");
 
-
-  constructor(public personaService: PersonaService) { }
-
-  ngOnInit(): void {
-    this.personaService.getPersona().subscribe(data => {this.persona = data})
+  constructor(public personaService: PersonaService,) { 
+    
   }
 
-  Editar(persona:persona){
+  ngOnInit(): void {
+    this.cargarPersonas();
+  }
+
+  cargarPersonas(): void {
+    this.personaService.getPersona().subscribe(
+      data => {
+        this.persona = data;
+      });
+  }
+
+
+  Editar(persona:Persona){
     this.personaService.EditPersona( persona ).subscribe
     (data => {this.persona = data})
 
     console.log( this.persona )
   }
 
-}
+//   Editar(persona:Persona): void{
+//          localStorage.setItem("id",persona.id.toString());
+//        }
+ }
+

@@ -25,7 +25,7 @@
 
 <!-- Modal de editar -->
 
-<div 
+ <div 
   class="modal fade"
   id="perfilModal"
   tabindex="-1"
@@ -49,7 +49,8 @@
           <div class="form-group">
 
             <label>Nombre y Apellido:</label>
-            <input type="text"
+            <input class="form-control"
+            type="text"
              placeholder="Nombre y Apellido"
              [(ngModel)]="persona.nombreApellido"
              name="nombreApellido"
@@ -58,7 +59,8 @@
           <div class="form-group">
 
             <label>Puesto:</label>
-            <input type="text"
+            <input class="form-control"
+            type="text"
              placeholder="Puesto"
              [(ngModel)]="persona.puesto"
              name="puesto"
@@ -67,7 +69,8 @@
           </div>
           <div class="form-group">
             <label>Pais y Ciudad:</label>
-            <input type="text"
+            <input class="form-control"
+            type="text"
              placeholder="Pais y Ciudad"
              [(ngModel)]="persona.paisCiudad"
              name="paisCiudad"
@@ -76,7 +79,8 @@
           </div>
           <div class="form-group">
             <label>Imagen:</label>
-            <input type="file"
+            <input class="form-control"
+            type="text"
              placeholder="Imagen de Perfil"
              [(ngModel)]="persona.img"
              name="img"
@@ -102,4 +106,4 @@
           
     </div>
   </div>
-</div>
+</div> 
