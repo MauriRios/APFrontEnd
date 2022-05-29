@@ -18,11 +18,3 @@ this.periodoTrabajado = periodoTrabajado;
 this.img = img;
 }
 }
-
-export interface Experiencias {
-    id: number ;
-    empresa: String;
-    puesto: String;
-    periodoTrabajado: String;
-    img: String;
-}

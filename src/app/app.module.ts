@@ -12,6 +12,9 @@ import { ExperienciaComponent } from './components/experiencia/experiencia.compo
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { FormsModule } from '@angular/forms';
+import { EditComponent } from './components/experiencia/modals/edit/edit.component';
+import { AddComponent } from './components/experiencia/modals/add/add.component';
+import { DeleteComponent } from './components/experiencia/modals/delete/delete.component'; 
 
 
 @NgModule({
@@ -24,6 +27,9 @@ import { FormsModule } from '@angular/forms';
     ExperienciaComponent,
     ProyectosComponent,
     SkillsComponent,
+    EditComponent,
+    AddComponent,
+    DeleteComponent,
 
   ],
   imports: [
