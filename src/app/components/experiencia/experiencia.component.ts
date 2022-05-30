@@ -26,7 +26,6 @@ export class ExperienciaComponent implements OnInit {
     });
 
   }
-  
   Eliminar(experiencias: Experiencia): void {
     this.experienciaService
       .deleteExperiencia(experiencias)
@@ -38,6 +37,7 @@ export class ExperienciaComponent implements OnInit {
 
     console.log(experiencias);
   }
+
 
 
   tomarId(experiencia: Experiencia): void {
