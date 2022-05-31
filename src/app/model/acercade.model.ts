@@ -1,6 +1,15 @@
-export interface acercaDe {
-    id?: number ;
+export class acercaDe {
+    id: number ;
     miInfo: String;
     stackInfo: String;
 
+    constructor(id: number,
+        miInfo: String, 
+        stackInfo: String,
+        ){
+        
+this.id = id;
+this.miInfo = miInfo;
+this.stackInfo = stackInfo;
+}
 }
