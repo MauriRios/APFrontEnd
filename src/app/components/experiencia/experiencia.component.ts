@@ -11,7 +11,7 @@ import { ExperienciaService } from 'src/app/service/experiencia.service';
 export class ExperienciaComponent implements OnInit {
 
   experiencia: Experiencia = new Experiencia(0,"","","","")
-  experiencias: Experiencia[] = [];
+  experiencias: Experiencia [] = [];
 
   constructor(private experienciaService: ExperienciaService,
               private router:Router
@@ -40,8 +40,6 @@ export class ExperienciaComponent implements OnInit {
 
     console.log(experiencias);
   }
-
-
 
   tomarId(experiencia: Experiencia): void {
     localStorage.setItem('id', experiencia.id.toString() ) ;

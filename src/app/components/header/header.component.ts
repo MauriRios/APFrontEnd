@@ -29,7 +29,7 @@ persona: Persona = new Persona(0,"", "", "", "");
 
   Editar(persona:Persona){
     this.personaService.EditPersona( persona ).subscribe
-    (data => {this.persona = data})
+    (data => {this.persona = data});
 
     console.log( this.persona )
   }

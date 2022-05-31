@@ -9,7 +9,6 @@ import { Persona } from '../model/persona.model';
 export class PersonaService {
 
   URL= 'http://localhost:8080/persona/';
- 
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +18,7 @@ export class PersonaService {
   }
 
   public EditPersona(persona:Persona){
-   return this.http.put<Persona>(this.URL +'editar/' + persona.id, persona)
+  return this.http.put<Persona>(this.URL +'editar/' + persona.id, persona)
     
   }
   

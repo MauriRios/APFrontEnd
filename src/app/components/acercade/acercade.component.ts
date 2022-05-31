@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { acercaDe } from 'src/app/model/acercade.model';
+import { AcercaDe } from 'src/app/model/acercade.model';
 import { AcercaDeService } from 'src/app/service/acerca-de.service';
 
 @Component({
@@ -9,13 +9,29 @@ import { AcercaDeService } from 'src/app/service/acerca-de.service';
 })
 export class AcercadeComponent implements OnInit {
 
-  //acercaDe: acercaDe = new acercaDe("", "");
-  acercaDe: acercaDe [] = [];
+  acercaDe: AcercaDe = new AcercaDe(0,"","");
+  // acercaDes: AcercaDe [] = [];
 
-  constructor(public acercaDeService: AcercaDeService) { }
+  constructor(public acercaDeService: AcercaDeService,) { }
 
   ngOnInit(): void {
-    this.acercaDeService.getAcercaDe().subscribe(data => {this.acercaDe = data})
+    this.cargarAcercaDe();
   }
+
+  cargarAcercaDe():void {
+    this.acercaDeService.getAcercaDe().subscribe(
+      data => {
+        this.acercaDe = data;
+      });
+  }
+
+  
+  Editar(acercaDe:AcercaDe){
+    this.acercaDeService.EditAcercaDe( acercaDe ).subscribe
+    (data => {this.acercaDe = data});
+
+    console.log( this.acercaDe )
+  }
+
 
 }

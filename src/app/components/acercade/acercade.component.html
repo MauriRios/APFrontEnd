@@ -1,43 +1,34 @@
 <div class="container-cards shadow-sm">
-  <div class="row" *ngFor="let acercaDe of acercaDe">
+  <div class="row" >
     <div class="col-8 col-sm-3 col-lg-11 mb-3">
       <h2>Acerca De</h2>
     </div>
-    <div class="col-4 col-sm-9 col-lg-1 ">
-
-    </div>
-    <div class="col-9 col-sm-7 col-lg-11 ">
-      <p>{{acercaDe.miInfo}}</p>
+    <div class="col-4 col-sm-9 col-lg-1"></div>
+    <div class="col-9 col-sm-7 col-lg-11">
+      <p>{{ acercaDe.miInfo }}</p>
     </div>
     <div class="col-3 col-sm-2 col-lg-1">
+      <a
+        class="btn gap-1"
+        data-bs-toggle="modal"
+        data-bs-target="#acercaDeModal"
+        ><i class="fa-solid fa-pen"></i
+      ></a>
 
-      <a class="btn gap-1"
-      data-bs-toggle="modal"
-      data-bs-target="#acercaDeModal"
-   ><i class="fa-solid fa-pen"></i></a>
-  
-   <a class="btn gap-1"
-      data-bs-toggle="modal"
-      data-bs-target="#EliminarModal"
-   ><i class="fa-solid fa-eraser"></i></a>
     </div>
     <div class="col-8 mb-3 mt-3">
       <h3>Stack Tecnologico</h3>
     </div>
-    <div class="col-4">
-
-    </div>
+    <div class="col-4"></div>
     <div class="col-9">
       <p>
-        {{acercaDe.stackInfo}}
+        {{ acercaDe.stackInfo }}
       </p>
     </div>
   </div>
-
 </div>
 
 <!-- Acerca de Modal Edicion -->
-
 <div
   class="modal fade"
   id="acercaDeModal"
@@ -48,7 +39,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Acerca De</h5>
+        <h4 class="modal-title" id="exampleModalLabel">Editar Mi Informacion:</h4>
         <button
           type="button"
           class="btn-close"
@@ -57,18 +48,47 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form action="">
-          <h5>Mi informacion</h5>
-          <input type="text" placeholder="Mi informacion" />
-          <h5>Informacion de Stack</h5>
-          <input type="text" placeholder="Informacion de Stack" />
+        
+        <form (ngSubmit)="Editar(acercaDe)">
+          <div class="form-group">
+            <label>Mi Informacion:</label>
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Nombre y Apellido"
+              [(ngModel)]="acercaDe.miInfo"
+              name="miInfo"
+            />
+          </div>
+          <div class="form-group">
+            <label>Informacion de mi Stack:</label>
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Puesto"
+              [(ngModel)]="acercaDe.stackInfo"
+              name="stackInfo"
+            />
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Guardar Cambios
+            </button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cerrar
-        </button>
-        <button type="button" class="btn btn-primary">Guardar Cambios</button>
       </div>
     </div>
   </div>

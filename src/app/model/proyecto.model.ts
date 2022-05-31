@@ -13,5 +13,4 @@ this.tituloProyecto = this.tituloProyecto;
 this.descripcionProyecto = descripcionProyecto;
 
 }
-
 }
