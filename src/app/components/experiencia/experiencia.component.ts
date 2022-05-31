@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Experiencia } from 'src/app/model/experiencia.model';
 import { ExperienciaService } from 'src/app/service/experiencia.service';
 
@@ -12,7 +13,9 @@ export class ExperienciaComponent implements OnInit {
   experiencia: Experiencia = new Experiencia(0,"","","","")
   experiencias: Experiencia[] = [];
 
-  constructor(private experienciaService: ExperienciaService) {}
+  constructor(private experienciaService: ExperienciaService,
+              private router:Router
+    ) {}
 
   ngOnInit(): void {
     this.cargarExperiencias();
@@ -43,6 +46,7 @@ export class ExperienciaComponent implements OnInit {
   tomarId(experiencia: Experiencia): void {
     localStorage.setItem('id', experiencia.id.toString() ) ;
     console.log(localStorage);
+    this.router.navigate(['edit'])
   }
 
 }

@@ -1,85 +1,125 @@
- <div class="container-cards shadow-sm" >
-    <div class="row">
-      <div class="col-8 col-sm-3 mb-4 col-lg-2">
-        <h2>Educacion</h2>
-      </div>
-      <div class="col-4 col-sm-9 col-lg-10">
-        <a class="btn p-0">
-          <i class="fa-solid fa-plus"></i></a>
-      </div>
+<div class="container-cards shadow-sm">
+  <div class="row">
+    <div class="col-8 col-sm-3 mb-4 col-lg-2">
+      <h2>Educacion</h2>
     </div>
-
-    <div class="row mb-3 " *ngFor="let educacion of educacion">
-      <div class="col-4 col-sm-3 col-lg-2 text-center">
-        <img class="logo-img bg-black img-fluid" src="{{educacion.img}}"/>
-      </div>
-
-      <div class="col-5 col-sm-7 col-lg-9 mb-3">
-        <h3 class="mb-3">{{educacion.institucion}}</h3>
-        <p class="mb-3">{{educacion.titulo}}</p>
-        <p class="mb-3">{{educacion.periodoEstudio}}</p>
-      </div>
-
-      <div class="col-3 col-sm-2 col-lg-1">
-
-      <a class="btn gap-1"
-         data-bs-toggle="modal"
-         data-bs-target="#educacionModal"
-      ><i class="fa-solid fa-pen"></i></a>
-
-      <a class="btn gap-1"
-         data-bs-toggle="modal"
-         data-bs-target="#EliminarModal"
-      ><i class="fa-solid fa-eraser"></i></a>
-      </div>
+    <div class="col-4 col-sm-9 col-lg-10">
+      <a class="btn p-0"> <i class="fa-solid fa-plus"></i></a>
     </div>
-
   </div>
 
-  <!-- Educacion Edit Modal -->
+  <div class="row mb-3" *ngFor="let educacion of educaciones">
+    <div class="col-4 col-sm-3 col-lg-2 text-center">
+      <img class="logo-img bg-black img-fluid" src="{{ educacion.img }}" />
+    </div>
+
+    <div class="col-5 col-sm-7 col-lg-9 mb-3">
+      <h3 class="mb-3">{{ educacion.institucion }}</h3>
+      <p class="mb-3">{{ educacion.titulo }}</p>
+      <p class="mb-3">{{ educacion.periodoEstudio }}</p>
+    </div>
+
+    <div class="col-3 col-sm-2 col-lg-1">
+      <a
+        (click)="tomarId(educacion)"
+        class="btn gap-1"
+        data-bs-toggle="modal"
+        data-bs-target="#educacionModal"
+        ><i class="fa-solid fa-pen"></i
+      ></a>
+
+      <a
+        class="btn gap-1"
+        data-bs-toggle="modal"
+        data-bs-target="#EliminarModal"
+        ><i class="fa-solid fa-eraser"></i
+      ></a>
+    </div>
+  </div>
+</div>
+
+<!-- Educacion Edit Modal -->
 <div
-class="modal fade"
-id="educacionModal"
-tabindex="-1"
-aria-labelledby="exampleModalLabel"
-aria-hidden="true"
->
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Editar Educacion</h5>
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="modal"
-        aria-label="Close"
-      ></button>
-    </div>
-    <div class="modal-body">
-      <form action="">
-        <h5>Institucion</h5>
-        <input type="text" placeholder="Institucion" />
-        <h5>Titulo</h5>
-        <input type="text" placeholder="Titulo" />
-        <h5>Periodo Estudio</h5>
-        <input type="text" placeholder="Periodo estudio" />
-        <h5>Imagen</h5>
-        <input type="file" placeholder="Imagen" />
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-        Cerrar
-      </button>
-      <button type="button" class="btn btn-primary">Guardar Cambios</button>
+  class="modal fade"
+  id="educacionModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Educacion</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+
+        <form [formGroup]="educacionFormEdit" >
+          <div class="form-group">
+            <label>Institucion:</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="educacion.institucion"
+              name="institucion"
+              formControlName="institucion"
+            />
+          </div>
+          <div class="form-group">
+            <label>Titulo:</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="educacion.titulo"
+              name="titulo"
+              formControlName="titulo"
+            />
+          </div>
+          <div class="form-group">
+            <label>Periodo de Estudio:</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="educacion.periodoEstudio"
+              name="periodoEstudio"
+              formControlName="periodoEstudio"
+            />
+          </div>
+          <div class="form-group">
+            <label>Imagen:</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="educacion.img"
+              name="img"
+              formControlName="img"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button (click)="Actualizar(educacion)"
+                type="submit"
+                data-bs-dismiss="modal"
+                class="btn btn-primary"
+        >Guardar Cambios</button>
+      </div>
     </div>
   </div>
 </div>
-</div>
-
 
 <!-- Eliminar Model -->
- <div
+<div
   class="modal fade"
   id="EliminarModal"
   tabindex="-1"
@@ -104,7 +144,7 @@ aria-hidden="true"
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Cancelar
         </button>
-        <button type="button" class="btn btn-primary" >Eliminar</button>
+        <button type="button" class="btn btn-primary">Eliminar</button>
       </div>
     </div>
   </div>

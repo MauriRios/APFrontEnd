@@ -10,6 +10,9 @@ import { ExperienciaService } from 'src/app/service/experiencia.service';
 export class AddComponent implements OnInit {
 
   experiencia: Experiencia = new Experiencia(0, '', '', '', '');
+  
+  // experiencia: Experiencia [] = []
+
 
   constructor(private experienciaService: ExperienciaService) { }
 
@@ -24,5 +27,20 @@ export class AddComponent implements OnInit {
     console.log(Experiencia);
   }
   
+  
+
+  
+  // saveExperiencia(){
+  //   this.experiencia.push({
+  //     id: this.id, 
+  //     empresa: this.empresa,
+  //     puesto: this.puesto,
+  //     periodoTrabajado: this.periodoTrabajado,
+  //     img: this.img,
+  //   }
+  //   );
+  //   this.experienciaService.createExperiencia( this.experiencia ).subscribe();
+  //   console.log("Objeto añadido")
+  // }
 
 }

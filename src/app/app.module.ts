@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routing } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AcercadeComponent } from './components/acercade/acercade.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -11,10 +11,18 @@ import { EducacionComponent } from './components/educacion/educacion.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { SkillsComponent } from './components/skills/skills.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './components/experiencia/modals/edit/edit.component';
 import { AddComponent } from './components/experiencia/modals/add/add.component';
-import { DeleteComponent } from './components/experiencia/modals/delete/delete.component'; 
+import { DeleteComponent } from './components/experiencia/modals/delete/delete.component';
+import { MainComponent } from './components/main/main.component';
+import { ExperienciaService } from './service/experiencia.service';
+import { PersonaService } from './service/persona.service';
+import { SkillService } from './service/skill.service';
+import { EducacionService } from './service/educacion.service';
+import { AcercaDeService } from './service/acerca-de.service';
+import { ProyectoService } from './service/proyecto.service';
+
 
 
 @NgModule({
@@ -30,15 +38,25 @@ import { DeleteComponent } from './components/experiencia/modals/delete/delete.c
     EditComponent,
     AddComponent,
     DeleteComponent,
+    MainComponent,
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    routing
   ],
-  providers: [],
+  providers: [ExperienciaService,
+              PersonaService,
+              SkillService,
+              EducacionService,
+              AcercaDeService,
+              ProyectoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 <!-- Modal de editar -->
-<div
+<!-- <div
   class="modal fade"
   id="experienciaModalEdit"
   tabindex="-1"
@@ -18,7 +18,8 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="Editar(experiencia)">
+
+        <form [formGroup]="experienciaForm" >
           <div class="form-group">
             <label>Empresa:</label>
             <input
@@ -26,6 +27,7 @@
               type="text"
               [(ngModel)]="experiencia.empresa"
               name="empresa"
+              formControlName="empresa"
             />
           </div>
           <div class="form-group">
@@ -35,6 +37,7 @@
               type="text"
               [(ngModel)]="experiencia.puesto"
               name="puesto"
+              formControlName="puesto"
             />
           </div>
           <div class="form-group">
@@ -44,6 +47,7 @@
               type="text"
               [(ngModel)]="experiencia.periodoTrabajado"
               name="periodoTrabajado"
+              formControlName="periodoTrabajado"
             />
           </div>
           <div class="form-group">
@@ -53,6 +57,7 @@
               type="text"
               [(ngModel)]="experiencia.img"
               name="img"
+              formControlName="img"
             />
           </div>
           <div class="modal-footer">
@@ -78,6 +83,76 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
+<div class="card">
+  <div class="card-header">
+    <h3>Editar Experiencia: {{experiencia.id}}</h3>
+  </div>
+  <div class="card-body">
+
+    <form [formGroup]="experienciaForm" >
+      <div class="form-group">
+        <label>Empresa:</label>
+        <input
+          class="form-control"
+          type="text"
+          [(ngModel)]="experiencia.empresa"
+          name="empresa"
+          formControlName="empresa"
+        />
+      </div>
+      <div class="form-group">
+        <label>Puesto:</label>
+        <input
+          class="form-control"
+          type="text"
+          [(ngModel)]="experiencia.puesto"
+          name="puesto"
+          formControlName="puesto"
+        />
+      </div>
+      <div class="form-group">
+        <label>Periodo Trabajado:</label>
+        <input
+          class="form-control"
+          type="text"
+          [(ngModel)]="experiencia.periodoTrabajado"
+          name="periodoTrabajado"
+          formControlName="periodoTrabajado"
+        />
+      </div>
+      <div class="form-group">
+        <label>Imagen:</label>
+        <input
+          class="form-control"
+          type="text"
+          [(ngModel)]="experiencia.img"
+          name="img"
+          formControlName="img"
+        />
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          
+        >
+          Cerrar
+        </button>
+
+        <button
+          (click)="Actualizar(experiencia)"
+          type="submit"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+        >
+          Guardar Cambios
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
 
