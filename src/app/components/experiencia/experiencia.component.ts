@@ -27,6 +27,7 @@ export class ExperienciaComponent implements OnInit {
     this.experienciaService.getExperiencias().subscribe((data) => {
       this.experiencias = data;
     });
+    console.log(this.experiencia)
 
   }
   Eliminar(experiencias: Experiencia): void {
