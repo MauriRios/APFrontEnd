@@ -11,7 +11,7 @@ import { MainComponent } from './components/main/main.component';
 
     {path: '',redirectTo:'/home', pathMatch:'full'},
     {path: 'home',component: MainComponent},
-    {path: 'editexp',component: EditComponent},
+    {path: 'home/editexp',component: EditComponent},
     {path: 'editedu',component: EditComponent},
     {path: 'editskills',component: EditComponent},
 

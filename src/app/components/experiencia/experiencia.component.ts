@@ -46,7 +46,7 @@ export class ExperienciaComponent implements OnInit {
   tomarId(experiencia: Experiencia): void {
     localStorage.setItem('id', experiencia.id.toString() ) ;
     console.log(localStorage);
-    this.router.navigate(['edit'])
+    this.router.navigate(['home/editExp'])
   }
 
 }
