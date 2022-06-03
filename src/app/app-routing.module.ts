@@ -8,12 +8,12 @@ import { MainComponent } from './components/main/main.component';
 
   const rutas: Routes=[
 
-    {
-      path: '',component: MainComponent
-  },
-    {
-        path: 'edit',component: EditComponent
-    },
+
+    {path: '',redirectTo:'/home', pathMatch:'full'},
+    {path: 'home',component: MainComponent},
+    {path: 'editexp',component: EditComponent},
+    {path: 'editedu',component: EditComponent},
+    {path: 'editskills',component: EditComponent},
 
 
 

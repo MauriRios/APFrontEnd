@@ -12,6 +12,7 @@ export class ExperienciaComponent implements OnInit {
 
   experiencia: Experiencia = new Experiencia(0,"","","","")
   experiencias: Experiencia [] = [];
+  
 
   constructor(private experienciaService: ExperienciaService,
               private router:Router
