@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Experiencia } from 'src/app/model/experiencia.model';
 import { ExperienciaService } from 'src/app/service/experiencia.service';
 
+
 @Component({
   selector: 'app-experiencia',
   templateUrl: './experiencia.component.html',
@@ -46,7 +47,8 @@ export class ExperienciaComponent implements OnInit {
   tomarId(experiencia: Experiencia): void {
     localStorage.setItem('id', experiencia.id.toString() ) ;
     console.log(localStorage);
-    this.router.navigate(['home/editExp'])
+    this.router.navigate(['edit']);
+    
   }
 
 }

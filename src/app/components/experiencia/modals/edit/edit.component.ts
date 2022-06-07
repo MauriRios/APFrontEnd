@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Educacion } from 'src/app/model/educacion.model';
 import { Experiencia } from 'src/app/model/experiencia.model';
+import { EducacionService } from 'src/app/service/educacion.service';
 import { ExperienciaService } from 'src/app/service/experiencia.service';
-import { ExperienciaComponent } from '../../experiencia.component';
 
 @Component({
   selector: 'app-edit',
@@ -23,12 +24,11 @@ export class EditComponent implements OnInit {
     empresa:['',Validators.required],
     puesto:['',Validators.required],
     periodoTrabajado:['',Validators.required],
-    img:['']
+    img:[''],
   })
 
-
   ngOnInit(): void {
-    this.Editar(this.experiencia)
+    this.EditarExp(this.experiencia)
 
   }
 
@@ -45,13 +45,15 @@ export class EditComponent implements OnInit {
     
   }
 
-  Editar(experiencia: Experiencia) {
+  EditarExp(experiencia: Experiencia) {
     let id = localStorage.getItem("id");
     this.experienciaService.getExperiencia(+id).subscribe((data) => {
       this.experiencia = data;
     });
   }
 
-  
+  cancelarExp(){
+    this.router.navigate([''])
+  }
 
 }

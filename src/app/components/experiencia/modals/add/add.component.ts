@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, NgModule, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
+import { Educacion } from 'src/app/model/educacion.model';
 import { Experiencia } from 'src/app/model/experiencia.model';
 import { ExperienciaService } from 'src/app/service/experiencia.service';
 
@@ -10,17 +12,26 @@ import { ExperienciaService } from 'src/app/service/experiencia.service';
 export class AddComponent implements OnInit {
 
   experiencia: Experiencia = new Experiencia(0, '', '', '', '');
+//experiencia: Experiencia [] = []
+educacion: Educacion = new Educacion(0,"", "", "","");
   
-  // experiencia: Experiencia [] = []
-
-
   constructor(private experienciaService: ExperienciaService) { }
 
   ngOnInit(): void {
   }
 
   Agregar(experiencia: Experiencia) {
-    this.experienciaService.createExperiencia(experiencia).subscribe();
+    this.experienciaService.createExperiencia(experiencia)
+    .subscribe();
+    alert('Experiencia creada...');
+    window.location.reload();
+
+    console.log(Experiencia);
+  }
+
+  addEdu(experiencia: Experiencia) {
+    this.experienciaService.createExperiencia(experiencia)
+    .subscribe();
     alert('Experiencia creada...');
     window.location.reload();
 
