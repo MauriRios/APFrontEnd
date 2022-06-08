@@ -13,7 +13,6 @@ export class AddComponent implements OnInit {
 
   experiencia: Experiencia = new Experiencia(0, '', '', '', '');
 //experiencia: Experiencia [] = []
-educacion: Educacion = new Educacion(0,"", "", "","");
   
   constructor(private experienciaService: ExperienciaService) { }
 
@@ -28,18 +27,6 @@ educacion: Educacion = new Educacion(0,"", "", "","");
 
     console.log(Experiencia);
   }
-
-  addEdu(experiencia: Experiencia) {
-    this.experienciaService.createExperiencia(experiencia)
-    .subscribe();
-    alert('Experiencia creada...');
-    window.location.reload();
-
-    console.log(Experiencia);
-  }
-  
-  
-
   
   // saveExperiencia(){
   //   this.experiencia.push({

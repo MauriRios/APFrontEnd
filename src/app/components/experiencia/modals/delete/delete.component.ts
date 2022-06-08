@@ -12,8 +12,7 @@ export class DeleteComponent implements OnInit {
   experiencia: Experiencia = new Experiencia(0,"","","","")
   experiencias: Experiencia[] = [];
 
-  @Input() id: Experiencia;
-  @Input() expe: Experiencia;
+  
 
   constructor(private experienciaService: ExperienciaService) { }
 
@@ -26,7 +25,6 @@ export class DeleteComponent implements OnInit {
       .deleteExperiencia(experiencias)
       .subscribe((data) => {
         this.experiencias = this.experiencias.filter((p) => p !== experiencias);
-        window.location.reload
         alert('Experiencia eliminada...');
       });
 
