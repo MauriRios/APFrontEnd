@@ -1,8 +1,7 @@
-import { Component, Input, NgModule, OnInit } from '@angular/core';
-import { NgModel } from '@angular/forms';
-import { Educacion } from 'src/app/model/educacion.model';
+import { Component,  Input, OnInit } from '@angular/core';
 import { Experiencia } from 'src/app/model/experiencia.model';
 import { ExperienciaService } from 'src/app/service/experiencia.service';
+
 
 @Component({
   selector: 'app-add',
@@ -10,35 +9,25 @@ import { ExperienciaService } from 'src/app/service/experiencia.service';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
-
-  experiencia: Experiencia = new Experiencia(0, '', '', '', '');
-//experiencia: Experiencia [] = []
   
-  constructor(private experienciaService: ExperienciaService) { }
+  constructor( private experienciaService: ExperienciaService ) { }
+
+  @Input() experiencia: Experiencia = {
+    empresa: '',
+    puesto: '',
+    periodoTrabajado: '',
+    img: ''
+  }
 
   ngOnInit(): void {
+    
   }
 
-  Agregar(experiencia: Experiencia) {
-    this.experienciaService.createExperiencia(experiencia)
-    .subscribe();
-    alert('Experiencia creada...');
-    window.location.reload();
-
-    console.log(Experiencia);
+  Agregar() {
+    this.experienciaService.addExperiencia( this.experiencia );
+    this.experienciaService.createExperiencia(this.experiencia)
+    .subscribe(),
+    console.log(this.experiencia);
   }
-  
-  // saveExperiencia(){
-  //   this.experiencia.push({
-  //     id: this.id, 
-  //     empresa: this.empresa,
-  //     puesto: this.puesto,
-  //     periodoTrabajado: this.periodoTrabajado,
-  //     img: this.img,
-  //   }
-  //   );
-  //   this.experienciaService.createExperiencia( this.experiencia ).subscribe();
-  //   console.log("Objeto añadido")
-  // }
-
 }
+

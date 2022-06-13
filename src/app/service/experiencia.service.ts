@@ -9,7 +9,31 @@ import { Experiencia } from '../model/experiencia.model';
 export class ExperienciaService {
   URL = 'http://localhost:8080/experiencia';
 
+  experiencia: Experiencia = {
+    empresa: '',
+    puesto: '',
+    periodoTrabajado: '',
+    img: ''
+  }
+  experiencias: Experiencia[] = [];
+
   constructor(private http: HttpClient) {}
+  
+  traerExperienciasServicio() {
+  this.getExperiencias().subscribe(data => {this.experiencias = data});
+  }
+
+  addExperiencia(experiencias: Experiencia) {
+    this.experiencias.push(experiencias);
+  }
+
+  editExperienciaService(experiencia: Experiencia){
+    this.http.put<Experiencia>(this.URL + '/editar/' + experiencia.id,experiencia);
+  }
+
+  dataExperiencia() {
+    
+  }
 
   public getExperiencias(): Observable<Experiencia[]> {
     return this.http.get<Experiencia[]>(this.URL + '/traer');
@@ -27,7 +51,8 @@ export class ExperienciaService {
     return this.http.delete<Experiencia>(this.URL + '/borrar/' + experiencia.id);
   }
 
-  public editExperiencia(experiencia: Experiencia) {
+  public editExperiencia(experiencia: Experiencia){
     return this.http.put<Experiencia>(this.URL + '/editar/' + experiencia.id,experiencia);
   }
+
 }

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ExperienciaService } from 'src/app/service/experiencia.service';
 
 
 @Component({
@@ -8,12 +9,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 
 export class MainComponent implements OnInit {
+  
 
-  @Input() empresa!: String;
 
-  constructor() { }
+  constructor(private experienciaService: ExperienciaService,
+              
+    ) { }
 
   ngOnInit(): void {
   }
+
 
 }

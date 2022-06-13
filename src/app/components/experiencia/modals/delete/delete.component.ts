@@ -9,8 +9,8 @@ import { ExperienciaService } from 'src/app/service/experiencia.service';
 })
 export class DeleteComponent implements OnInit {
 
-  experiencia: Experiencia = new Experiencia(0,"","","","")
-  experiencias: Experiencia[] = [];
+  @Input() experiencia: Experiencia 
+  @Input() experiencias: Experiencia [] = [];
 
   
 
