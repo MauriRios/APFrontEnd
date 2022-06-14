@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Experiencia } from 'src/app/model/experiencia.model';
 
@@ -21,14 +22,14 @@ export class ExperienciaComponent implements OnInit {
   }
 
   constructor(private experienciaService: ExperienciaService,
-              // private router:Router
+              private router:Router
     ) {}
+
+
 
   ngOnInit(): void {
     this.experienciaService.traerExperienciasServicio();
-
   }
-
 
   Eliminar(experiencias: Experiencia): void {
     this.experienciaService
@@ -41,11 +42,10 @@ export class ExperienciaComponent implements OnInit {
 
     console.log(experiencias);
   }
-
-  tomarId(experiencia: Experiencia): void {
-    localStorage.setItem('id', experiencia.id.toString() ) ;
-    console.log(localStorage);
-    // this.router.navigate(['edit']);
+    
+  tomarId(experiencia : Experiencia): void {
+    localStorage.setItem('id', experiencia.id.toString()),
+    this.router.navigate(['edit']);
     
   }
 
