@@ -10,7 +10,6 @@ import { MainComponent } from './components/main/main.component';
 
     {path: '',redirectTo:'/home', pathMatch:'full'},
     {path: 'home',component: MainComponent},
-    {path: 'edit',component: EditComponent},
     // {path: 'editedu',component: EditComponent},
     // {path: 'editskills',component: EditComponent},
 
