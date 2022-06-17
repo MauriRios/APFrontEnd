@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { proyecto } from '../model/proyecto.model';
+import { Proyecto } from '../model/proyecto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class ProyectoService {
 
   constructor(private http: HttpClient) { }
 
-  public getProyecto(): Observable<proyecto[]>{
-    return this.http.get<proyecto[]>(this.URL+'traer');
+  public getProyecto(): Observable<Proyecto[]>{
+    return this.http.get<Proyecto[]>(this.URL+'traer');
   }
 }

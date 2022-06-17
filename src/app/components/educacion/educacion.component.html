@@ -4,7 +4,9 @@
       <h2>Educacion</h2>
     </div>
     <div class="col-4 col-sm-9 col-lg-10">
-      <a class="btn p-0"> <i class="fa-solid fa-plus"></i></a>
+      <a class="btn p-0" (click)="onAgregar(agregarEdu)">
+        <i class="fa-solid fa-plus"></i
+      ></a>
     </div>
   </div>
 
@@ -21,7 +23,7 @@
 
     <div class="col-3 col-sm-2 col-lg-1">
       <a
-        (click)="tomarId(educacion)"
+        (click)="openEdit(editEdu, educacion)"
         class="btn gap-1"
         data-bs-toggle="modal"
         data-bs-target="#educacionModal"
@@ -29,6 +31,7 @@
       ></a>
 
       <a
+        (click)="openDelete(contentDelete, educacion)"
         class="btn gap-1"
         data-bs-toggle="modal"
         data-bs-target="#EliminarModal"
@@ -38,36 +41,139 @@
   </div>
 </div>
 
-
-
-<!-- Eliminar Model -->
-<!-- <div
-  class="modal fade"
-  id="EliminarModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+<ng-template #agregarEdu let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar Educacion</h4>
+    <button
+      type="button"
+      class="btn-close btn"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+      <div class="form-group">
+        <label>Institucion:</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            name="institucion"
+            id="institucion"
+            ngModel
+            required
+          />
+        </div>
       </div>
-      <div class="modal-body">
-        <p>¿Estas seguro que quieres eliminar este contenido?</p>
+      <div class="form-group">
+        <label for="institucion">Titulo:</label>
+        <div class="input-group">
+          <input id="titulo"
+          name="titulo"
+          class="form-control"
+          ngModel />
+        </div>
       </div>
+      <div class="form-group">
+        <label for="periodoEstudio">Periodo:</label>
+        <div class="input-group">
+          <input
+            id="periodoEstudio"
+            name="periodoEstudio"
+            class="form-control"
+            ngModel
+          />
+        </div>
+      </div>
+      <br />
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cancelar
+        <button
+          type="submit"
+          class="btn btn-outline-dark"
+          (click)="c('Save click')"
+        >
+          Agregar
         </button>
-        <button type="button" class="btn btn-primary">Eliminar</button>
       </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #editEdu let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title2">Editar Educacion</h4>
+    <button
+      type="button"
+      class="close btn"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm" novalidate>
+      <div class="form-group">
+        <label for="institucion">Institucion:</label>
+        <div class="input-group">
+          <input formControlName="institucion" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="titulo">Titulo:</label>
+        <div class="input-group">
+          <input formControlName="titulo" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="periodoEstudio">Periodo:</label>
+        <div class="input-group">
+          <input formControlName="periodoEstudio" class="form-control" />
+        </div>
+      </div>
+    </form>
+
+    <div class="modal-footer">
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="modal.close('Save click')"
+      >
+        Cerrar
+      </button>
+      <button data-dismiss="modal" class="btn btn-danger" (click)="onSave()">
+        Actualizar
+      </button>
     </div>
   </div>
-</div> -->
+</ng-template>
+
+<ng-template #contentDelete let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Eliminar Educacion</h4>
+    <button
+      type="button"
+      class="close btn"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h3>Esta seguro de eliminar este registro?</h3>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn  btn-primary"
+      (click)="modal.close('Save click')"
+    >
+      Cerrar
+    </button>
+    <button data-dismiss="modal" class="btn btn-danger" (click)="onDelete()">
+      Eliminar
+    </button>
+  </div>
+</ng-template>

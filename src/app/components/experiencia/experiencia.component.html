@@ -5,6 +5,7 @@
       </div>
       <div class="col-4 col-sm-9 col-lg-10">
       <a
+      (click)="onAgregar(agregarExp)"
       class="btn p-0"
       data-bs-toggle="modal"
       data-bs-target="#experienciaModalAgregar"
@@ -27,13 +28,13 @@
       <a
         data-bs-toggle="modal"
         data-bs-target="#experienciaModalEditar"
-        (click)="tomarId(experiencia)"
+        (click)="openEdit(editExp, experiencia)"
         class="btn gap-1"
         ><i class="fa-solid fa-pen"></i
       ></a>
 
       <a
-        (click)="Eliminar(experiencia)"
+        (click)="openDelete(expDelete, experiencia)"
         data-bs-toggle="modal"
         data-bs-target="#experienciaModalEliminar"
         type="button"
@@ -43,152 +44,159 @@
       
     </div>
   </div>
-  
-  <app-add ></app-add>
-  <app-edit></app-edit>
-
 </div>
   
   
-  
-
-
-<!-- (click)="Eliminar(expe)" -->
-
-<!-- Agregar Experiencia modal -->
-
-
-<!-- <div
-  class="modal fade"
-  id="experienciaModalAgregar"
-  tabindex="-1"
-  aria-labelledby="experienciaModalAgregar"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="experienciaModalAgregar">
-          Agregar Experiencia
-        </h4>
+<ng-template #agregarExp let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar Experiencia</h4>
+    <button
+      type="button"
+      class="btn-close btn"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+      <div class="form-group">
+        <label>Empresa:</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            name="empresa"
+            id="empresa"
+            ngModel
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="puesto">Puesto:</label>
+        <div class="input-group">
+          <input id="puesto"
+          name="puesto"
+          class="form-control"
+          ngModel />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="periodoTrabajado">Periodo:</label>
+        <div class="input-group">
+          <input
+            id="periodoTrabajado"
+            name="periodoTrabajado"
+            class="form-control"
+            ngModel
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="img">Imagen:</label>
+        <div class="input-group">
+          <input
+            id="img"
+            name="img"
+            class="form-control"
+            ngModel
+          />
+        </div>
+      </div>
+      <br />
+      <div class="modal-footer">
         <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+          type="submit"
+          class="btn btn-outline-dark"
+          (click)="c('Save click')"
+        >
+          Agregar
+        </button>
       </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label>Empresa:</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Nombre y Apellido"
-              [(ngModel)]="experiencia.empresa"
-              name="empresa"
-            />
-          </div>
-          <div class="form-group">
-            <label>Puesto y descripcion:</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Puesto"
-              [(ngModel)]="experiencia.puesto"
-              name="puesto"
-            />
-          </div>
-          <div class="form-group">
-            <label>Periodo Trabajado:</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Pais y Ciudad"
-              [(ngModel)]="experiencia.periodoTrabajado"
-              name="periodoTrabajado"
-            />
-          </div>
-          <div class="form-group">
-            <label>Imagen:</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Imagen de Perfil"
-              [(ngModel)]="experiencia.img"
-              name="img"
-            />
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Cerrar
-            </button>
+    </form>
+  </div>
+</ng-template>
 
-            <button
-              (click)="Agregar(experiencia)"
-              type="submit"
-              class="btn btn-primary"
-              data-bs-dismiss="modal"
-            >
-              Guardar Cambios
-            </button>
-          </div>
-        </form>
+<ng-template #editExp let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title2">Editar Experiencia</h4>
+    <button
+      type="button"
+      class="close btn"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm" novalidate>
+      <div class="form-group">
+        <label for="empresa">Empresa:</label>
+        <div class="input-group">
+          <input formControlName="empresa" class="form-control" />
+        </div>
       </div>
+      <div class="form-group">
+        <label for="puesto">Puesto:</label>
+        <div class="input-group">
+          <input formControlName="puesto" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="periodoTrabajado">Periodo:</label>
+        <div class="input-group">
+          <input formControlName="periodoTrabajado" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="img">Imagen:</label>
+        <div class="input-group">
+          <input formControlName="img" class="form-control" />
+        </div>
+      </div>
+    </form>
+
+    <div class="modal-footer">
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="modal.close('Save click')"
+      >
+        Cerrar
+      </button>
+      <button data-dismiss="modal" class="btn btn-danger" (click)="onSave()">
+        Actualizar
+      </button>
     </div>
   </div>
-</div> -->
+</ng-template>
 
-
-<!-- (click)="Eliminar(expe)" -->
-
-<!-- Eliminar Model -->
-
-
-
-<!-- <div class="modal" id="experienciaModalEliminar" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Eliminar</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <p>¿Seguro quieres eliminar el ID: {{experiencia.id}}? </p>
-
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-              
-            >
-              No
-            </button>
-            <button
-              (click)="Eliminar(expe)"
-              data-bs-dismiss="modal"
-              type="submit"
-              class="btn btn-danger"
-            >
-              Si
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+<ng-template #expDelete let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Eliminar Experiencia</h4>
+    <button
+      type="button"
+      class="close btn"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
-</div> -->
-
-
+  <div class="modal-body">
+    <h3>Esta seguro de eliminar este registro?</h3>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="modal.close('Save click')"
+    >
+      Cerrar
+    </button>
+    <button data-dismiss="modal" class="btn btn-danger" (click)="onDelete()">
+      Eliminar
+    </button>
+  </div>
+</ng-template>

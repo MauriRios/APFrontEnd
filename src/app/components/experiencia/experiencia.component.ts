@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
+import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Experiencia } from 'src/app/model/experiencia.model';
 
-import { ExperienciaService } from 'src/app/service/experiencia.service';
 
 
 @Component({
@@ -11,42 +12,113 @@ import { ExperienciaService } from 'src/app/service/experiencia.service';
   styleUrls: ['./experiencia.component.css'],
 })
 export class ExperienciaComponent implements OnInit {
+
+  experiencias: Experiencia[];
+  closeResult: string;
+  editForm: FormGroup;
+  private deleteId: number;
+
+  constructor(config: NgbModalConfig, 
+    private modalService: NgbModal,
+    private fb: FormBuilder,
+    public httpClient:HttpClient) {
+    // customize default values of modals used by this component tree
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
+
   
-  get experiencia(): Experiencia  {
-    return this.experienciaService.experiencia;
-  }
-
-  get experiencias(): Experiencia[] {
-    return this.experienciaService.experiencias;
-  }
-
-  constructor(private experienciaService: ExperienciaService,
-              // private router:Router
-    ) {}
 
   ngOnInit(): void {
-    this.experienciaService.traerExperienciasServicio();
+    this.getExperiencias();
+    this.editForm = this.fb.group({
+      id: [''],
+      empresa: [''],
+      puesto: [''],
+      periodoTrabajado: [''],
+      img: [''],
+    });
+  }
 
+  getExperiencias(){
+    this.httpClient.get<any>('http://localhost:8080/experiencia/traer').subscribe(
+      response =>{
+        console.log(response);
+        this.experiencias = response;
+      }
+    )
   }
 
 
-  Eliminar(experiencias: Experiencia): void {
-    this.experienciaService
-      .deleteExperiencia(experiencias)
-      .subscribe((data) => {
-        this.experiencias.filter((e) => e !== experiencias);
-        // window.location.reload
-        alert('Experiencia eliminada...');
+  onSubmit(f: NgForm) {
+    console.log(f.form.value);
+    const url = 'http://localhost:8080/experiencia/crear';
+    this.httpClient.post(url, f.value)
+      .subscribe((result) => {
+        this.ngOnInit(); // reload the table
       });
-
-    console.log(experiencias);
+    this.modalService.dismissAll(); // dismiss the modal
   }
 
-  tomarId(experiencia: Experiencia): void {
-    localStorage.setItem('id', experiencia.id.toString() ) ;
-    console.log(localStorage);
-    // this.router.navigate(['edit']);
-    
+  openEdit(targetModal, experiencia:Experiencia) {
+    this.modalService.open(targetModal, {
+      centered: true,
+      backdrop: 'static',
+      size: 'lg'
+    });
+    this.editForm.patchValue( {
+      id: experiencia.id,
+      empresa: experiencia.empresa,
+      puesto: experiencia.puesto,
+      periodoTrabajado: experiencia.periodoTrabajado,
+      img: experiencia.img
+    });
   }
+
+  onSave() {
+    const editURL = 'http://localhost:8080/experiencia/' + 'editar/'  + this.editForm.value.id ;
+    this.httpClient.put(editURL, this.editForm.value)
+      .subscribe((results) => {
+        this.ngOnInit();
+        this.modalService.dismissAll();
+      });
+  }
+
+  openDelete(targetModal, experiencia:Experiencia) {
+    this.deleteId = experiencia.id;
+    this.modalService.open(targetModal, {
+      backdrop: 'static',
+      size: 'lg'
+    });
+  }
+
+  onDelete() {
+    const deleteURL = 'http://localhost:8080/experiencia/' +  'borrar/'+ this.deleteId ;
+    this.httpClient.delete(deleteURL)
+      .subscribe((results) => {
+        this.ngOnInit();
+        this.modalService.dismissAll();
+      });
+  }
+
+
+  onAgregar(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
 
 }

@@ -12,9 +12,6 @@ import { ExperienciaComponent } from './components/experiencia/experiencia.compo
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EditComponent } from './components/experiencia/modals/edit/edit.component';
-import { AddComponent } from './components/experiencia/modals/add/add.component';
-import { DeleteComponent } from './components/experiencia/modals/delete/delete.component';
 import { MainComponent } from './components/main/main.component';
 import { ExperienciaService } from './service/experiencia.service';
 import { PersonaService } from './service/persona.service';
@@ -22,6 +19,7 @@ import { SkillService } from './service/skill.service';
 import { EducacionService } from './service/educacion.service';
 import { AcercaDeService } from './service/acerca-de.service';
 import { ProyectoService } from './service/proyecto.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -35,9 +33,6 @@ import { ProyectoService } from './service/proyecto.service';
     ExperienciaComponent,
     ProyectosComponent,
     SkillsComponent,
-    EditComponent,
-    AddComponent,
-    DeleteComponent,
     MainComponent,
 
 
@@ -48,7 +43,8 @@ import { ProyectoService } from './service/proyecto.service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    routing
+    routing,
+    NgbModule
   ],
   providers: [ExperienciaService,
               PersonaService,

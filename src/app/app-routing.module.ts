@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExperienciaComponent } from './components/experiencia/experiencia.component';
-import { EditComponent } from './components/experiencia/modals/edit/edit.component';
+
 import { MainComponent } from './components/main/main.component';
 
 

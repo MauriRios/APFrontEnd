@@ -52,7 +52,7 @@ export class ExperienciaService {
   }
 
   public editExperiencia(experiencia: Experiencia){
-    return this.http.put<Experiencia>(this.URL + '/editar/' + experiencia.id,experiencia);
+    return this.http.put<Experiencia>(this.URL + 'editar/' + experiencia.id,experiencia);
   }
 
 }

@@ -1,73 +1,161 @@
 <div class="container-cards shadow-sm">
-    <div class="row">
-      <div class="col-8 col-sm-3">
-        <h2>Proyectos</h2>
+  <div class="row">
+    <div class="col-8 col-sm-3">
+      <h2>Proyectos</h2>
+    </div>
+    <div class="col-4 col-sm-9">
+      <a class="btn p-0"
+      (click)="onAgregar(agregarProyecto)"
+      > <i class="fa-solid fa-plus"></i></a>
+    </div>
+
+    <div class="row" *ngFor="let proyecto of proyectos">
+      <div class="col-9 col-sm-11">
+        <h3>
+          <a href="#">{{ proyecto.tituloProyecto }}</a>
+        </h3>
+        <p class="fs-7">{{ proyecto.descripcionProyecto }}</p>
       </div>
-      <div class="col-4 col-sm-9">
-        <a class="btn p-0">
-          <i class="fa-solid fa-plus"></i></a>
-      </div>
 
-      <div class="row" *ngFor="let proyect of proyecto">
-        <div class="col-9 col-sm-11" >
-          <h3><a href="#">{{proyect.tituloProyecto}}</a></h3>
-          <p class="fs-7">{{proyect.descripcionProyecto}}</p>
-        </div>
+      <div class="col-3 col-sm-1 d-flex gap-2 justify-content-end">
+        <a
+        (click)="openEdit(editarProyecto, proyecto)"
+          class="btn p-0"
+          data-bs-toggle="modal"
+          data-bs-target="#proyectosModal"
+          ><i class="fa-solid fa-pen"></i
+        ></a>
 
-        <div class="col-3 col-sm-1 d-flex gap-2 justify-content-end">
-
-          <a class="btn p-0"
-             data-bs-toggle="modal"
-             data-bs-target="#proyectosModal"
-       ><i class="fa-solid fa-pen"></i></a>
- 
-       <a class="btn p-0"
+        <a
+        (click)="openDelete(deleteProyecto, proyecto)"
+          class="btn p-0"
           data-bs-toggle="modal"
           data-bs-target="#EliminarModal"
-       ><i class="fa-solid fa-eraser"></i></a>
- 
-        </div>
-      </div>
-    </div>
-  
-  
-  </div>
-
-<!-- Proyectos Edit Modal -->
-<div
-  class="modal fade"
-  id="proyectosModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Proyectos</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form action="">
-          <h5>Titulo del proyecto</h5>
-          <input type="text" placeholder="Titulo del proyecto" />
-          <h5>Informacion del proyecto</h5>
-          <input type="text" placeholder="Informacion del proyecto" />
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cerrar
-        </button>
-        <button type="button" class="btn btn-primary">Guardar Cambios</button>
+          ><i class="fa-solid fa-eraser"></i
+        ></a>
       </div>
     </div>
   </div>
 </div>
 
+<!-- Agegar Proyecto template -->
 
+<ng-template #agregarProyecto let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar Proyecto</h4>
+    <button
+      type="button"
+      class="btn-close btn"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+      <div class="form-group">
+        <label>Titulo Proyecto:</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            name="tituloProyecto"
+            id="tituloProyecto"
+            ngModel
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="puesto">Descripcion Proyecto:</label>
+        <div class="input-group">
+          <input id="descripcionProyecto" name="descripcionProyecto" class="form-control" ngModel />
+        </div>
+      </div>
+      <br />
+      <div class="modal-footer">
+        <button
+          type="submit"
+          class="btn btn-outline-dark"
+          (click)="c('Save click')"
+        >
+          Agregar
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<!-- Editar Proyecto template -->
+
+<ng-template #editarProyecto let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title2">Editar Proyecto</h4>
+    <button
+      type="button"
+      class="close btn"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm" novalidate>
+      <div class="form-group">
+        <label for="tituloProyecto">Titulo Proyecto:</label>
+        <div class="input-group">
+          <input formControlName="tituloProyecto" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="descripcionProyecto">Descripcion:</label>
+        <div class="input-group">
+          <input formControlName="descripcionProyecto" class="form-control" />
+        </div>
+      </div>
+    </form>
+
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="modal.close('Save click')"
+      >
+        Cerrar
+      </button>
+      <button data-dismiss="modal" class="btn btn-danger" (click)="onSave()">
+        Actualizar
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Eliminar Proyecto template -->
+
+<ng-template #deleteProyecto let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Eliminar Experiencia</h4>
+    <button
+      type="button"
+      class="close btn"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h3>Esta seguro de eliminar este registro?</h3>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="modal.close('Save click')"
+    >
+      Cerrar
+    </button>
+    <button data-dismiss="modal" class="btn btn-danger" (click)="onDelete()">
+      Eliminar
+    </button>
+  </div>
+</ng-template>
