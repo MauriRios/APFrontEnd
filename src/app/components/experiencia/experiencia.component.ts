@@ -29,6 +29,8 @@ export class ExperienciaComponent implements OnInit {
 
   
 
+
+
   ngOnInit(): void {
     this.getExperiencias();
     this.editForm = this.fb.group({

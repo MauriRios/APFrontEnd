@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Experiencia } from '../model/experiencia.model';
 
@@ -15,9 +16,12 @@ export class ExperienciaService {
     periodoTrabajado: '',
     img: ''
   }
+
   experiencias: Experiencia[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+              private router:Router,
+              ) {}
   
   traerExperienciasServicio() {
   this.getExperiencias().subscribe(data => {this.experiencias = data});
@@ -27,13 +31,13 @@ export class ExperienciaService {
     this.experiencias.push(experiencias);
   }
 
-  editExperienciaService(experiencia: Experiencia){
-    this.http.put<Experiencia>(this.URL + '/editar/' + experiencia.id,experiencia);
+  getIdService(experiencia: Experiencia) {
+    let id = localStorage.getItem("id");
+    this.getExperiencia(+id).subscribe((data) => {
+      this.experiencia = data;});
+      
   }
 
-  dataExperiencia() {
-    
-  }
 
   public getExperiencias(): Observable<Experiencia[]> {
     return this.http.get<Experiencia[]>(this.URL + '/traer');
