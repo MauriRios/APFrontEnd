@@ -79,15 +79,15 @@ export class ProyectosComponent implements OnInit {
       });
   }
 
-  openDelete(targetModal, proyectos:Proyecto) {
-    this.deleteId = proyectos.id;
+  openDelete(targetModal, proyecto:Proyecto) {
+    this.deleteId = proyecto.id;
     this.modalService.open(targetModal, {
       backdrop: 'static',
       size: 'lg'
     });
   }
 
-  onDelete() {
+  onDelete(): void {
     const deleteURL = 'http://localhost:8080/proyecto/' +  'borrar/'+ this.deleteId ;
     this.httpClient.delete(deleteURL)
       .subscribe((results) => {

@@ -19,18 +19,14 @@
 
       <div class="col-3 col-sm-1 d-flex gap-2 justify-content-end">
         <a
-        (click)="openEdit(editarProyecto, proyecto)"
+          (click)="openEdit(editarProyecto, proyecto)"
           class="btn p-0"
-          data-bs-toggle="modal"
-          data-bs-target="#proyectosModal"
           ><i class="fa-solid fa-pen"></i
         ></a>
 
         <a
         (click)="openDelete(deleteProyecto, proyecto)"
           class="btn p-0"
-          data-bs-toggle="modal"
-          data-bs-target="#EliminarModal"
           ><i class="fa-solid fa-eraser"></i
         ></a>
       </div>
@@ -67,7 +63,9 @@
       <div class="form-group">
         <label for="puesto">Descripcion Proyecto:</label>
         <div class="input-group">
-          <input id="descripcionProyecto" name="descripcionProyecto" class="form-control" ngModel />
+          <input id="descripcionProyecto"
+          name="descripcionProyecto"
+            class="form-control" ngModel />
         </div>
       </div>
       <br />
@@ -133,7 +131,7 @@
 
 <ng-template #deleteProyecto let-modal>
   <div class="modal-header">
-    <h4 class="modal-title">Eliminar Experiencia</h4>
+    <h4 class="modal-title">Eliminar Proyecto</h4>
     <button
       type="button"
       class="close btn"
@@ -144,7 +142,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <h3>Esta seguro de eliminar este registro?</h3>
+    <h3>¿Está seguro de eliminar este registro? </h3>
   </div>
   <div class="modal-footer">
     <button

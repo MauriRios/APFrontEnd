@@ -27,10 +27,6 @@ export class ExperienciaComponent implements OnInit {
     config.keyboard = false;
   }
 
-  
-
-
-
   ngOnInit(): void {
     this.getExperiencias();
     this.editForm = this.fb.group({

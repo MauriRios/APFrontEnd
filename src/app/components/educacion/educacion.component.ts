@@ -67,9 +67,10 @@ export class EducacionComponent implements OnInit {
     });
     this.editForm.patchValue( {
       id: educacion.id,
-      nombre: educacion.institucion,
-      institucion: educacion.titulo,
-      fechaIni: educacion.periodoEstudio,
+      institucion: educacion.institucion,
+      titulo: educacion.titulo,
+      periodoEstudio: educacion.periodoEstudio,
+      img: educacion.img,
     });
   }
 

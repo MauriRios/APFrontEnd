@@ -7,8 +7,6 @@
       <a
       (click)="onAgregar(agregarExp)"
       class="btn p-0"
-      data-bs-toggle="modal"
-      data-bs-target="#experienciaModalAgregar"
       ><i class="fa-solid fa-plus"></i
       ></a>
       </div>
@@ -43,6 +41,7 @@
   </div>
 </div>
   
+<!-- Modal Agregar -->
   
 <ng-template #agregarExp let-c="close" let-d="dismiss">
   <div class="modal-header">
@@ -113,6 +112,8 @@
   </div>
 </ng-template>
 
+<!-- Moidal Editar -->
+
 <ng-template #editExp let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title2">Editar Experiencia</h4>
@@ -182,7 +183,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <h3>Esta seguro de eliminar este registro?</h3>
+    <h3>¿Está seguro de eliminar este registro? </h3>
   </div>
   <div class="modal-footer">
     <button

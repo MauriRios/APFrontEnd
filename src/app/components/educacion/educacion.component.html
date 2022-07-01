@@ -25,21 +25,19 @@
       <a
         (click)="openEdit(editEdu, educacion)"
         class="btn gap-1"
-        data-bs-toggle="modal"
-        data-bs-target="#educacionModal"
         ><i class="fa-solid fa-pen"></i
       ></a>
 
       <a
         (click)="openDelete(contentDelete, educacion)"
         class="btn gap-1"
-        data-bs-toggle="modal"
-        data-bs-target="#EliminarModal"
         ><i class="fa-solid fa-eraser"></i
       ></a>
     </div>
   </div>
 </div>
+
+<!-- Modal Agregar -->
 
 <ng-template #agregarEdu let-c="close" let-d="dismiss">
   <div class="modal-header">
@@ -99,6 +97,8 @@
   </div>
 </ng-template>
 
+<!-- Modal Editar -->
+
 <ng-template #editEdu let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title2">Editar Educacion</h4>
@@ -131,6 +131,12 @@
           <input formControlName="periodoEstudio" class="form-control" />
         </div>
       </div>
+      <div class="form-group">
+        <label for="img">Imagen:</label>
+        <div class="input-group">
+          <input formControlName="img" class="form-control" />
+        </div>
+      </div>
     </form>
 
     <div class="modal-footer">
@@ -149,6 +155,8 @@
   </div>
 </ng-template>
 
+<!-- Modal Eliminar -->
+
 <ng-template #contentDelete let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Eliminar Educacion</h4>
@@ -162,7 +170,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <h3>Esta seguro de eliminar este registro?</h3>
+    <h3>¿Está seguro de eliminar este registro? </h3>
   </div>
   <div class="modal-footer">
     <button

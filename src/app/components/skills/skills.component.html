@@ -1,118 +1,294 @@
 <div class="container-cards row shadow-sm d-flex">
-  <div class="col-12 col-sm-12">
-    <h2>Hard and Soft Skills</h2>
-  </div>
-
   <div class="row">
-    <div class="col-4 col-sm-5">
-      <h3>Hard Skills</h3>
+    <div class="col-8 col-sm-3">
+      <h2>Hard and Soft Skills</h2>
     </div>
-    <div class="col-1 col-sm-1">
-      <a class="btn p-0"> <i class="fa-solid fa-plus"></i></a>
-    </div>
-    <div class="col-4 col-sm-5">
-      <h3>Soft Skills</h3>
-    </div>
-    <div class="col-1 col-sm-1">
-      <a class="btn p-0"><i class="fa-solid fa-plus"></i></a>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-4 col-sm-5 mb-2">
-      <span><b>Resolucion de problemas</b></span>
-    </div>
-
-    <div class="col-2 col-sm-1 mb-2 gap-2">
-      <a class="btn p-0" data-bs-toggle="modal" data-bs-target="#skillsModal"
-        ><i class="fa-solid fa-pen"></i
-      ></a>
-      <a class="btn p-0" data-bs-toggle="modal" data-bs-target="#EliminarModal"
-        ><i class="fa-solid fa-eraser"></i
+    <div class="col-4 col-sm-9">
+      <a class="btn p-0" (click)="onAgregar(agregarSkill)">
+        <i class="fa-solid fa-plus"></i
       ></a>
     </div>
 
-    <div class="col-4 col-sm-5 mb-2">
-      <span><b>Resolucion de problemas</b></span>
-    </div>
+    <div class="row" *ngFor="let skill of skills">
+      <div class="col-9 col-sm-11 text-center">
+        <h3>
+          {{ skill.skill }}
+        </h3>
+        <div class="progress">
+          <div
+            class="progress-bar progress-bar-striped"
+            role="progressbar"
+            attr.style="width:{{ skill.skillBar }}%"
+            aria-valuenow="10"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+      </div>
 
-    <div class="col-2 col-sm-1 mb-2">
-      <a class="btn p-0" data-bs-toggle="modal" data-bs-target="#skillsModal"
-        ><i class="fa-solid fa-pen"></i
-      ></a>
-      <a class="btn p-0" data-bs-toggle="modal" data-bs-target="#EliminarModal"
-        ><i class="fa-solid fa-eraser"></i
-      ></a>
-    </div>
-  </div>
+      <div class="col-3 col-sm-1 d-flex gap-2 justify-content-end">
+        <a (click)="openEdit(editarSkill, skill)" class="btn p-0"
+          ><i class="fa-solid fa-pen"></i
+        ></a>
 
-  <div class="row">
-    <div class="col-4 col-sm-5 mb-2">
-      <div class="progress">
-        <div
-          class="progress-bar progress-bar-striped progress-bar-animated"
-          role="progressbar"
-          aria-valuenow="75"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          style="width: 75%"
-        ></div>
+        <a (click)="openDelete(deleteSkill, skill)" class="btn p-0"
+          ><i class="fa-solid fa-eraser"></i
+        ></a>
       </div>
     </div>
-
-    <div class="col-2 col-sm-1 mb-2"></div>
-
-    <div class="col-4 col-sm-5 mb-2">
-      <div class="progress">
-        <div
-          class="progress-bar progress-bar-striped progress-bar-animated"
-          role="progressbar"
-          aria-valuenow="75"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          style="width: 75%"
-        ></div>
-      </div>
-    </div>
-    <div class="col-2 col-sm-1 mb-2"></div>
   </div>
 </div>
 
-<!-- Hard And Soft Edit Modal -->
-<div
-  class="modal fade"
-  id="skillsModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
-          Hard And Soft Skills Editar
-        </h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+<!-- Hard And Soft Agregar Modal -->
+
+<!-- <ng-template #agregarSkill let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar Skill</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm">
+      <div class="form-group">
+        <label>Tecnologia </label>
+        <input
+          type="text"
+          name="skill"
+          id=""
+          class="form-control"
+          formControlName="skill"
+        />
       </div>
-      <div class="modal-body">
-        <form action="">
-          <h5>Titulo del skill</h5>
-          <input type="text" placeholder="Titulo del skill" />
-          <h5>Barra</h5>
-          <input type="text" placeholder="Barra" />
-        </form>
+      <div class="form-group">
+        <label>Porcentaje</label>
+        <input
+          type="range"
+          class="form-range"
+          formControlName="skillBar"
+          id="customRange1"
+        />
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cerrar
+        <button
+          type="submit"
+          class="btn btn-outline-dark"
+          (click)="c('Save click')"
+        >
+          Agregar
         </button>
-        <button type="button" class="btn btn-primary">Guardar Cambios</button>
       </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #editarSkill let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title2">Editar Habilidad</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm">
+      <div class="form-group">
+        <label>tecnologia </label>
+        <input
+          type="text"
+          name="tecnologia"
+          id=""
+          class="form-control"
+          formControlName="tecnologia"
+          value=""
+        />
+      </div>
+      <div class="form-group">
+        <label>porcentaje</label>
+        <input
+          type="range"
+          class="form-range"
+          formControlName="porcentaje"
+          id="customRange1"
+        />
+      </div>
+    </form>
+
+    <div class="modal-footer">
+      <button data-dismiss="modal" class="btn btn-primary" (click)="onSave()">
+        Actualizar
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="modal.close('Save click')"
+      >
+        Cerrar
+      </button>
     </div>
   </div>
-</div>
+</ng-template>
+
+<ng-template #deleteSkill let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Eliminar Habilidad</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h3>¿Está seguro de eliminar este registro?</h3>
+  </div>
+  <div class="modal-footer">
+    <button data-dismiss="modal" class="btn btn-danger" (click)="onDelete()">
+      Eliminar
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Cerrar
+    </button>
+  </div>
+</ng-template> -->
+
+<ng-template #agregarSkill let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar Skill</h4>
+    <button
+      type="button"
+      class="btn-close btn"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+      <div class="form-group">
+        <label>Titulo Skill:</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            name="skill"
+            id="skill"
+            ngModel
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="skillBar">%:</label>
+        <div class="input-group">
+          <input type="range" 
+          class="form-range" 
+          formControlName="skillBar" 
+          id="customRange1" ngModel>
+        </div>
+      </div>
+      <br />
+      <div class="modal-footer">
+        <button
+          type="submit"
+          class="btn btn-outline-dark"
+          (click)="c('Save click')"
+        >
+          Agregar
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+
+  <!-- Editar Skill template  -->
+
+<ng-template #editarSkill let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title2">Editar Skill</h4>
+    <button
+      type="button"
+      class="close btn"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm" novalidate>
+      <div class="form-group">
+        <label for="skill">Titulo Skill:</label>
+        <div class="input-group">
+          <input formControlName="skill" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="skillBar">%:</label>
+        <div class="input-group">
+          <input formControlName="skillBar"
+          name="skillBar" 
+          class="form-control"/>
+        </div>
+      </div>
+    </form>
+
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="modal.close('Save click')"
+      >
+        Cerrar
+      </button>
+      <button data-dismiss="modal" class="btn btn-danger" 
+      (click)="onSave()">
+        Actualizar
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Eliminar Proyecto template -->
+
+<ng-template #deleteSkill let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Eliminar Skill</h4>
+    <button
+      type="button"
+      class="close btn"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h3>¿Está seguro de eliminar este registro?</h3>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="modal.close('Save click')"
+    >
+      Cerrar
+    </button>
+    <button data-dismiss="modal" class="btn btn-danger" (click)="onDelete()">
+      Eliminar
+    </button>
+  </div>
+</ng-template>
+

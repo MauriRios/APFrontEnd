@@ -1,17 +1,12 @@
-export class skill {
-    id: number ;
+export class Skill {
+    id?: number ;
     skill: String;
     skillBar: String;
 
-    constructor(id: number,
-        skill: String, 
-        skillBar: String,
-){
-        
-this.id = id;
-this.skill = skill;
-this.skillBar = skillBar;
-
-}
+    constructor(id:number,  skill: String, skillBar:String){
+        this.id= id;
+        this.skill=skill;
+        this.skillBar=skillBar;
+    }
 
 }
