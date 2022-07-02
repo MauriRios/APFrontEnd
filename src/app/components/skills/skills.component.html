@@ -1,7 +1,7 @@
 <div class="container-cards row shadow-sm d-flex">
   <div class="row">
     <div class="col-8 col-sm-3">
-      <h2>Hard and Soft Skills</h2>
+      <h2>Habilidades</h2>
     </div>
     <div class="col-4 col-sm-9">
       <a class="btn p-0" (click)="onAgregar(agregarSkill)">
@@ -11,7 +11,7 @@
 
     <div class="row" *ngFor="let skill of skills">
       <div class="col-9 col-sm-11 text-center">
-        <h3>
+        <h3 class="my-3">
           {{ skill.skill }}
         </h3>
         <div>
@@ -26,8 +26,7 @@
           </p>
         </div>
       </div>
-
-      <div class="col-3 col-sm-1 d-flex gap-2 justify-content-end">
+      <div class="col-3 col-sm-1 d-flex gap-2 justify-content-end text-center">
         <a (click)="openEdit(editSkill, skill)" class="btn p-0"
           ><i class="fa-solid fa-pen"></i
         ></a>
@@ -36,6 +35,7 @@
           ><i class="fa-solid fa-eraser"></i
         ></a>
       </div>
+
     </div>
   </div>
 </div>
