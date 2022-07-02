@@ -12,25 +12,7 @@ export class SkillService {
 
   constructor(private http: HttpClient) { }
 
-  public getSkills(): Observable<Skill[]>{
+  public getExperiencia(): Observable<Skill[]>{
     return this.http.get<Skill[]>(this.URL + 'traer');
   }
-
-  public getSkill()  {
-    return this.http.get<Skill[]>(this.URL + 'traer');
-  }
-
-  public addSkill(skill: Skill) {
-    return this.http.post<Skill>(this.URL + 'crear', skill);
-  }
-
-  public deleteSkill(id: any) {
-    return this.http.delete<Skill>(this.URL + 'borrar/' + id);
-  }
-
-  public updateSkill(skill: Skill) {
-    return this.http.put<Skill>(this.URL + 'editar/'+ skill.id, skill)
-  }
-
 }
-
