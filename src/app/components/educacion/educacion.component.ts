@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Educacion } from 'src/app/model/educacion.model';
+import { TokenService } from 'src/app/service/token.service';
 
 
 @Component({
@@ -16,8 +17,11 @@ export class EducacionComponent implements OnInit {
   closeResult: string;
   editForm: FormGroup;
   private deleteId: number;
+  isAdmin = false;
+  roles: string[];
 
   constructor(config: NgbModalConfig, 
+    private tokenService : TokenService,
     private modalService: NgbModal,
     private fb: FormBuilder,
     public httpClient:HttpClient) {
@@ -25,8 +29,6 @@ export class EducacionComponent implements OnInit {
     config.backdrop = 'static';
     config.keyboard = false;
   }
-
-  
 
   ngOnInit(): void {
     this.getEducacion();
@@ -36,13 +38,20 @@ export class EducacionComponent implements OnInit {
       institucion: [''],
       periodoEstudio: [''],
       img: [''],
+    }),
+
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
     });
   }
 
   getEducacion(){
     this.httpClient.get<any>('http://localhost:8080/educacion/traer').subscribe(
       response =>{
-        console.log(response);
+        // console.log(response);
         this.educaciones =response;
       }
     )
@@ -50,7 +59,7 @@ export class EducacionComponent implements OnInit {
 
 
   onSubmit(f: NgForm) {
-    console.log(f.form.value);
+    // console.log(f.form.value);
     const url = 'http://localhost:8080/educacion/crear';
     this.httpClient.post(url, f.value)
       .subscribe((result) => {

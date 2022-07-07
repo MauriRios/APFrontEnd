@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
 import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Proyecto } from 'src/app/model/proyecto.model';
+import { TokenService } from 'src/app/service/token.service';
 
 
 @Component({
@@ -16,8 +17,11 @@ export class ProyectosComponent implements OnInit {
   closeResult: string;
   editForm: FormGroup;
   private deleteId: number;
+  isAdmin = false;
+  roles: string[];
 
   constructor(config: NgbModalConfig, 
+    private tokenService : TokenService,
     private modalService: NgbModal,
     private fb: FormBuilder,
     public httpClient:HttpClient) {
@@ -34,13 +38,20 @@ export class ProyectosComponent implements OnInit {
       id: [''],
       tituloProyecto: [''],
       descripcionProyecto: [''],
+    }),
+
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
     });
   }
 
   getProyectos(){
     this.httpClient.get<any>('http://localhost:8080/proyecto/traer').subscribe(
       response =>{
-        console.log(response);
+        // console.log(response);
         this.proyectos = response;
       }
     )
@@ -48,7 +59,7 @@ export class ProyectosComponent implements OnInit {
 
 
   onSubmit(f: NgForm) {
-    console.log(f.form.value);
+    // console.log(f.form.value);
     const url = 'http://localhost:8080/proyecto/crear';
     this.httpClient.post(url, f.value)
       .subscribe((result) => {

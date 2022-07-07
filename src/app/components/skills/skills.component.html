@@ -4,7 +4,7 @@
       <h2>Habilidades</h2>
     </div>
     <div class="col-4 col-sm-9">
-      <a class="btn p-0" (click)="onAgregar(agregarSkill)">
+      <a *ngIf="isAdmin" class="btn p-0" (click)="onAgregar(agregarSkill)">
         <i class="fa-solid fa-plus"></i
       ></a>
     </div>
@@ -27,11 +27,11 @@
         </div>
       </div>
       <div class="col-3 col-sm-1 d-flex gap-2 justify-content-end text-center">
-        <a (click)="openEdit(editSkill, skill)" class="btn p-0"
+        <a *ngIf="isAdmin" (click)="openEdit(editSkill, skill)" class="btn p-0"
           ><i class="fa-solid fa-pen"></i
         ></a>
 
-        <a (click)="openDelete(deleteSkill, skill)" class="btn p-0"
+        <a *ngIf="isAdmin" (click)="openDelete(deleteSkill, skill)" class="btn p-0"
           ><i class="fa-solid fa-eraser"></i
         ></a>
       </div>

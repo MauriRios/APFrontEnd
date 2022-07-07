@@ -20,10 +20,16 @@ import { EducacionService } from './service/educacion.service';
 import { AcercaDeService } from './service/acerca-de.service';
 import { ProyectoService } from './service/proyecto.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './auth/login.component';
+import { RegistroComponent } from './auth/registro.component';
 
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import { interceptorProvider } from './interceptors/interceptor.service';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
+
   declarations: [
     AppComponent,
     AcercadeComponent,
@@ -34,7 +40,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProyectosComponent,
     SkillsComponent,
     MainComponent,
-
+    LoginComponent,
+    RegistroComponent,
 
   ],
   imports: [
@@ -44,14 +51,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     routing,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+    
+    
   ],
   providers: [ExperienciaService,
               PersonaService,
               SkillService,
               EducacionService,
               AcercaDeService,
-              ProyectoService
+              ProyectoService,
+              interceptorProvider
   ],
   bootstrap: [AppComponent]
 })

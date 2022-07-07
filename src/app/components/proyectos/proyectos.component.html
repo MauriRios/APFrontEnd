@@ -4,7 +4,7 @@
       <h2>Proyectos</h2>
     </div>
     <div class="col-4 col-sm-9">
-      <a class="btn p-0"
+      <a class="btn p-0" *ngIf="isAdmin"
       (click)="onAgregar(agregarProyecto)"
       > <i class="fa-solid fa-plus"></i></a>
     </div>
@@ -18,13 +18,13 @@
       </div>
 
       <div class="col-3 col-sm-1 d-flex gap-2 justify-content-end">
-        <a
+        <a *ngIf="isAdmin"
           (click)="openEdit(editarProyecto, proyecto)"
           class="btn p-0"
           ><i class="fa-solid fa-pen"></i
         ></a>
 
-        <a
+        <a *ngIf="isAdmin"
         (click)="openDelete(deleteProyecto, proyecto)"
           class="btn p-0"
           ><i class="fa-solid fa-eraser"></i

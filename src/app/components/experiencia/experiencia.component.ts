@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
 import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Experiencia } from 'src/app/model/experiencia.model';
+import { TokenService } from 'src/app/service/token.service';
 
 
 
@@ -17,14 +18,17 @@ export class ExperienciaComponent implements OnInit {
   closeResult: string;
   editForm: FormGroup;
   private deleteId: number;
+  roles: string[];
+  isAdmin = false;
 
-  constructor(config: NgbModalConfig, 
+  constructor(config: NgbModalConfig,
+    private tokenService : TokenService,
     private modalService: NgbModal,
     private fb: FormBuilder,
     public httpClient:HttpClient) {
-    // customize default values of modals used by this component tree
     config.backdrop = 'static';
     config.keyboard = false;
+    
   }
 
   ngOnInit(): void {
@@ -35,13 +39,20 @@ export class ExperienciaComponent implements OnInit {
       puesto: [''],
       periodoTrabajado: [''],
       img: [''],
+    }),
+
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
     });
   }
 
   getExperiencias(){
     this.httpClient.get<any>('http://localhost:8080/experiencia/traer').subscribe(
       response =>{
-        console.log(response);
+        // console.log(response);
         this.experiencias = response;
       }
     )
@@ -49,7 +60,7 @@ export class ExperienciaComponent implements OnInit {
 
 
   onSubmit(f: NgForm) {
-    console.log(f.form.value);
+    // console.log(f.form.value);
     const url = 'http://localhost:8080/experiencia/crear';
     this.httpClient.post(url, f.value)
       .subscribe((result) => {

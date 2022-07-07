@@ -1,201 +1,177 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Playfair Display", serif;
-  }
-  
-  h1 {
-    font-size: 30px;
-    margin-bottom: 4px;
-    text-decoration: underline;
-  }
-  h2 {
-    font-size: 25px;
-    text-decoration: underline;
-  }
-  h3 {
-    font-size: 20px;
-  
-  }
-  h4 {
-    font-size: 15px;
-    margin: 5px;
-  }
-  h5 {
-    font-size: 13px;
-    margin: 5px;
-  }
-  h6 {
-    font-size: 11px;
-    margin: 5px;
-  }
-  
-  p,
-  span {
-    font-family: "Playfair Display", serif;
-    font-size: 15px;
-    margin: 2px;
-  }
-  
-  .card_header {  
-    border: 1px solid rgba(0, 0, 0, 20%);
-    border-radius: 30px;
-    margin: 2em 2em 1.5em 2em;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 35em 14em;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "img_banner"
-      "card_header_text";
-    height: 51em;
-  }
-  .img_perfil {
-    border-radius: 100%;
-    width: 15em;
-    height: 15em;
-    position: relative;
-    left: 3em;
-    bottom: 23em;
-  
-  }
+  box-sizing: border-box;
+}
 
- .fa-instagram  {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
+}
 
-    font-size: 35px;
-} 
-  .fa-linkedin  {
+h1 {
+  font-size: 30px;
+  margin-bottom: 4px;
+  text-decoration: underline;
+}
+h2 {
+  font-size: 25px;
+  text-decoration: underline;
+}
+h3 {
+  font-size: 20px;
+}
+h4 {
+  font-size: 15px;
+  margin: 5px;
+}
+h5 {
+  font-size: 13px;
+  margin: 5px;
+}
+h6 {
+  font-size: 11px;
+  margin: 5px;
+}
 
-  font-size: 35px;
-} 
+p,
+span {
+  font-family: "Playfair Display", serif;
+  font-size: 15px;
+  margin: 2px;
+}
 
-  .fa-right-to-bracket{
-    
+.card_header {
+  border: 1px solid rgba(0, 0, 0, 20%);
+  border-radius: 30px;
+  margin: 2em 2em 1.5em 2em;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 35em 14em;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "img_banner"
+    "card_header_text";
+  height: 51em;
+}
+.img_perfil {
+  border-radius: 100%;
+  width: 15em;
+  height: 15em;
+  position: relative;
+  left: 3em;
+  bottom: 23em;
+}
+
+.fa-instagram {
   font-size: 35px;
 }
- .logo-exp{
+.fa-linkedin {
+  font-size: 35px;
+}
+
+.fa-right-to-bracket {
+  font-size: 35px;
+}
+.logo-img {
   width: 100px;
   height: 100px;
 }
-  
-  .edit-header{
-    
-    left: 14em;
-    position: relative;
-    bottom: 2em;
-  }
 
-  .img_banner { 
-    width: 100%;
-    height: 35em;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    grid-area: img_banner;
-   }
-  
+.edit-header {
+  left: 14em;
+  position: relative;
+  bottom: 2em;
+}
+
+.img_banner {
+  width: 100%;
+  height: 35em;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  grid-area: img_banner;
+}
+
+.card_header_text {
+  position: relative;
+  top: 7em;
+  left: 2em;
+  grid-area: card_header_text;
+  height: 7em;
+}
+
+.img_argentinaprogramanavbar {
+  width: 120px;
+  height: 90px;
+  border-radius: 20px;
+}
+
+.container-cards {
+  border: 1px solid rgba(0, 0, 0, 20%);
+  border-radius: 30px;
+  padding: 1em 0em 1em 2em;
+  margin: 0em 2em 1.5em 2em;
+}
+
+@media (max-width: 720px) {
+  .img_perfil {
+    width: 10em;
+    height: 10em;
+    left: 5em;
+    bottom: 21em;
+  }
   .card_header_text {
+    position: absolute;
+    left: 4em;
+    top: 30em;
+  }
+  .img_banner {
+    height: 20em;
+  }
+  .card_header {
+    height: 32em;
+  }
+  .edit-header {
+    left: 12em;
     position: relative;
-    top: 7em;
+    bottom: 0em;
+  }
+}
+
+@media (max-width: 670px) {
+  .img_perfil {
+    width: 10em;
+    height: 10em;
+    bottom: 19em;
     left: 2em;
-    grid-area: card_header_text;
+  }
+  .card_header_text {
+    top: 32em;
+    left: 4em;
+  }
+  .img_banner {
+    height: 20em;
+  }
+  .card_header {
+    height: 35em;
+  }
+  .edit-header {
+    left: 9em;
+    position: relative;
+    bottom: 1em;
+  }
+}
+@media (max-width: 440px) {
+  .img_perfil {
+    width: 7em;
     height: 7em;
-    
-    }
-
-    .img_argentinaprogramanavbar{
-      width: 100px;
-      height: 70px;
-      border-radius: 20px;
-    }
-    
-    .container-cards{
-      border: 1px solid rgba(0, 0, 0, 20%);
-      border-radius: 30px;
-      padding: 1em 0em 1em 2em;
-      margin: 0em 2em 1.5em 2em;
-    }
-
-    .logo-img{
-      width: 100px;
-      height: 100px;
-      border-radius: 20px;
-    }
-  
-  @media (max-width: 720px) {
-    .img_perfil {
-      width: 10em;
-      height: 10em;
-      left: 5em;
-      bottom: 21em;
-    }
-    .card_header_text {
-      position: absolute;
-      left: 4em;
-      top: 30em;
-      
-    }
-    .img_banner {
-      height: 20em;
-    }
-    .card_header {
-      height: 32em;
-    }
-    .edit-header{
-      left: 12em;
-      position: relative;
-      bottom: 0em;
-    }
-
   }
-  
-  @media (max-width: 670px) {
-    .img_perfil {
-      width: 10em;
-      height: 10em;
-      bottom: 19em;
-      left: 2em;
-    }
-    .card_header_text {
-      top: 32em;
-      left: 4em;
-    }
-    .img_banner {
-      height: 20em;
-    }
-    .card_header {
-      height: 35em;
-    }
-    .edit-header{
-      left: 9em;
-      position: relative;
-      bottom: 1em;
-    }
-  
+  .edit-header {
+    left: 7em;
+    position: relative;
+    bottom: 1em;
   }
-  @media (max-width: 440px) {
-    .img_perfil {
-      width: 7em;
-      height: 7em;
-
-    }
-    .edit-header{
-      left: 7em;
-      position: relative;
-      bottom: 1em;
-    }
-  }
-
-
-  
-    
-    
-
-  
+}

@@ -1,29 +1,32 @@
 
-
 <div class="container-fluid shadow-sm bg-dark ">
     <nav class="navbar navbar-dark">
       <div class="container d-flex">
-        <img  class="img_argentinaprogramanavbar"
+        <img  [routerLink]="'/home'"
+              class="btn img_argentinaprogramanavbar"
               src="../assets/img\APLogo-20-20.png"
               alt="Argentina Programa"
-               />
+              />
         <span class="p-2 fs-3 text-white ">{{ persona.nombreApellido }}</span>
         <span class="justify-content-right">
 
-         <button class="btn"><a href="#" target="_blank">
-           <i class="fab fa-instagram"></i>
+        <button class="btn"><a href="https://www.instagram.com/mauricio_rios28/" target="_blank">
+          <i class="fab fa-instagram"></i>
         </a></button>
-
           <button class="btn">
           <a href="https://www.linkedin.com/in/mauricio-osvaldo-rios-60b99116a/" target="_blank">
           <i class="fab fa-linkedin"></i></a>
         </button>
-
-          <button class="btn"><a href="#" target="_blank">
-            <i class="fa-solid fa-right-to-bracket"></i>
-          </a></button>
-
-          <!-- <button class="btn"><i class="fa-solid fa-right-from-bracket"></i></button> -->
+          <span *ngIf="!isLogged">
+            <button class="btn">
+              <a class="nav-link fs-5" routerLink="/login">Iniciar Sesión  <i class="fas fa-sign-in-alt"></i></a>
+            </button>
+          </span>
+          <span *ngIf="isLogged">
+            <button class="btn">
+              <a class="nav-link fs-5"  (click)="onLogOut()">Cerrar Sesión  <i class="fa-solid fa-right-from-bracket" ></i></a>
+            </button>
+          </span>
         </span>
       </div>
     </nav>

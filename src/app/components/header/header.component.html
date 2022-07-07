@@ -2,7 +2,7 @@
   <img class="img_banner shadow-sm" src="../assets/img/iex.jpg" alt="banner" />
   <img src="{{ persona.img }}" alt="Perfil" class="img_perfil shadow-sm" />
   <div class="card_header_text">
-    <button
+    <button *ngIf="isAdmin"
       class="edit-header btn"
       data-bs-toggle="modal"
       data-bs-target="#perfilModal"

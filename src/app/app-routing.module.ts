@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './auth/login.component';
+import { RegistroComponent } from './auth/registro.component';
 
 import { MainComponent } from './components/main/main.component';
 
@@ -10,6 +12,8 @@ import { MainComponent } from './components/main/main.component';
 
     {path: '',redirectTo:'/home', pathMatch:'full'},
     {path: 'home',component: MainComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'registro', component: RegistroComponent}
 
 ];
 
