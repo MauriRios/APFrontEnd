@@ -1,10 +1,10 @@
-<div class="container-cards row shadow-sm d-flex">
+<div class="container-cards card row shadow-sm d-flex">
   <div class="row">
     <div class="col-8 col-sm-3">
       <h2>Habilidades</h2>
     </div>
     <div class="col-4 col-sm-9">
-      <a *ngIf="isAdmin" class="btn p-0" (click)="onAgregar(agregarSkill)">
+      <a *ngIf="isAdmin" class="btn btn-edit p-0" (click)="onAgregar(agregarSkill)">
         <i class="fa-solid fa-plus"></i
       ></a>
     </div>
@@ -27,11 +27,11 @@
         </div>
       </div>
       <div class="col-3 col-sm-1 d-flex gap-2 justify-content-end text-center">
-        <a *ngIf="isAdmin" (click)="openEdit(editSkill, skill)" class="btn p-0"
+        <a *ngIf="isAdmin" (click)="openEdit(editSkill, skill)" class="btn btn-edit p-0"
           ><i class="fa-solid fa-pen"></i
         ></a>
 
-        <a *ngIf="isAdmin" (click)="openDelete(deleteSkill, skill)" class="btn p-0"
+        <a *ngIf="isAdmin" (click)="openDelete(deleteSkill, skill)" class="btn btn-edit p-0"
           ><i class="fa-solid fa-eraser"></i
         ></a>
       </div>
@@ -77,7 +77,7 @@
       <div class="modal-footer">
         <button
           type="submit"
-          class="btn btn-outline-dark"
+          class="btn btn-primary"
           (click)="c('Save click')"
         >
           Agregar
@@ -94,11 +94,10 @@
     <h4 class="modal-title" id="modal-basic-title2">Editar Skill</h4>
     <button
       type="button"
-      class="close btn"
+      class="btn-close  btn "
       aria-label="Close"
       (click)="modal.dismiss('Cross click')"
     >
-      <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
@@ -117,7 +116,7 @@
             class="form-range"
             formControlName="skillBar"
             id="customRange1"
-            ngModel
+            ngModelChange
           />
         </div>
       </div>
@@ -145,11 +144,10 @@
     <h4 class="modal-title">Eliminar Experiencia</h4>
     <button
       type="button"
-      class="close btn"
+      class="btn-close btn"
       aria-label="Close"
       (click)="modal.dismiss('Cross click')"
     >
-      <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">

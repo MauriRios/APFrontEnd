@@ -1,5 +1,5 @@
 
-<div class="container-fluid shadow-sm bg-dark ">
+<div style="background: inherit" class="container-fluid shadow-sm bg-dark">
     <nav class="navbar navbar-dark">
       <div class="container d-flex">
         <img  [routerLink]="'/home'"
@@ -10,20 +10,35 @@
         <span class="p-2 fs-3 text-white ">{{ persona.nombreApellido }}</span>
         <span class="justify-content-right">
 
-        <button class="btn"><a href="https://www.instagram.com/mauricio_rios28/" target="_blank">
-          <i class="fab fa-instagram"></i>
+        <button class="btn btn-edit"><a href="https://www.instagram.com/mauricio_rios28/" 
+          target="_blank">
+          <i class="fab fa-instagram fa-2x"></i>
         </a></button>
-          <button class="btn">
-          <a href="https://www.linkedin.com/in/mauricio-osvaldo-rios-60b99116a/" target="_blank">
-          <i class="fab fa-linkedin"></i></a>
-        </button>
+
+          <button class="btn btn-edit">
+          <a href="https://www.linkedin.com/in/mauricio-osvaldo-rios-60b99116a/" 
+          target="_blank">
+          <i class="fab fa-linkedin fa-2x"></i></a>
+          </button>
+          <span *ngIf="'default'">
+            <a class="btn btn-edit btn-dark" (click)="changeTheme('default')" 
+            ><i  class="fa-solid fa-sun text-primary fa-2x"></i></a>
+          </span>
+
+          <span *ngIf="'!default'"
+            (click)="changeTheme('dark')"
+            class="btn btn-edit btn-dark"
+            ><i class="fa-solid text-primary fa-moon fa-2x"></i>
+          </span>
+        
           <span *ngIf="!isLogged">
-            <button class="btn">
+            <button class="btn btn-edit">
               <a class="nav-link fs-5" routerLink="/login">Iniciar Sesión  <i class="fas fa-sign-in-alt"></i></a>
             </button>
           </span>
+        
           <span *ngIf="isLogged">
-            <button class="btn">
+            <button class="btn btn-edit">
               <a class="nav-link fs-5"  (click)="onLogOut()">Cerrar Sesión  <i class="fa-solid fa-right-from-bracket" ></i></a>
             </button>
           </span>

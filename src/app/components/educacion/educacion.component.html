@@ -1,10 +1,10 @@
-<div class="container-cards shadow-sm">
+<div class="container-cards card shadow-sm">
   <div class="row">
     <div class="col-8 col-sm-3 mb-4 col-lg-2">
       <h2>Educacion</h2>
     </div>
     <div class="col-4 col-sm-9 col-lg-10">
-      <a *ngIf="isAdmin" class="btn p-0" (click)="onAgregar(agregarEdu)">
+      <a *ngIf="isAdmin" class="btn btn-edit p-0" (click)="onAgregar(agregarEdu)">
         <i class="fa-solid fa-plus"></i
       ></a>
     </div>
@@ -24,13 +24,13 @@
     <div class="col-3 col-sm-2 col-lg-1">
       <a *ngIf="isAdmin"
         (click)="openEdit(editEdu, educacion)"
-        class="btn gap-1"
+        class="btn btn-edit gap-1"
         ><i class="fa-solid fa-pen"></i
       ></a>
 
       <a *ngIf="isAdmin"
         (click)="openDelete(contentDelete, educacion)"
-        class="btn gap-1"
+        class="btn btn-edit gap-1"
         ><i class="fa-solid fa-eraser"></i
       ></a>
     </div>
@@ -98,7 +98,7 @@
       <div class="modal-footer">
         <button
           type="submit"
-          class="btn btn-outline-dark"
+          class="btn btn-primary"
           (click)="c('Save click')"
         >
           Agregar
@@ -115,11 +115,10 @@
     <h4 class="modal-title" id="modal-basic-title2">Editar Educacion</h4>
     <button
       type="button"
-      class="close btn"
+      class="btn-close btn"
       aria-label="Close"
       (click)="modal.dismiss('Cross click')"
     >
-      <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
@@ -173,11 +172,10 @@
     <h4 class="modal-title">Eliminar Educacion</h4>
     <button
       type="button"
-      class="close btn"
+      class="btn-close btn"
       aria-label="Close"
       (click)="modal.dismiss('Cross click')"
     >
-      <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">

@@ -1,10 +1,10 @@
-<div class="container-cards shadow-sm">
+<div class="container-cards card shadow-sm">
   <div class="row">
     <div class="col-8 col-sm-3">
       <h2>Proyectos</h2>
     </div>
     <div class="col-4 col-sm-9">
-      <a class="btn p-0" *ngIf="isAdmin"
+      <a class="btn btn-edit p-0" *ngIf="isAdmin"
       (click)="onAgregar(agregarProyecto)"
       > <i class="fa-solid fa-plus"></i></a>
     </div>
@@ -20,13 +20,13 @@
       <div class="col-3 col-sm-1 d-flex gap-2 justify-content-end">
         <a *ngIf="isAdmin"
           (click)="openEdit(editarProyecto, proyecto)"
-          class="btn p-0"
+          class="btn btn-edit p-0"
           ><i class="fa-solid fa-pen"></i
         ></a>
 
         <a *ngIf="isAdmin"
-        (click)="openDelete(deleteProyecto, proyecto)"
-          class="btn p-0"
+          (click)="openDelete(deleteProyecto, proyecto)"
+          class="btn btn-edit p-0"
           ><i class="fa-solid fa-eraser"></i
         ></a>
       </div>
@@ -36,9 +36,11 @@
 
 <!-- Agegar Proyecto template -->
 
-<ng-template #agregarProyecto let-c="close" let-d="dismiss">
+<ng-template #agregarProyecto class="modales" let-c="close"
+let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Agregar Proyecto</h4>
+    <h4 class="modal-title"
+    id="modal-basic-title">Agregar Proyecto</h4>
     <button
       type="button"
       class="btn-close btn"
@@ -63,16 +65,16 @@
       <div class="form-group">
         <label for="puesto">Descripcion Proyecto:</label>
         <div class="input-group">
-          <input id="descripcionProyecto"
+          <textarea id="descripcionProyecto"
           name="descripcionProyecto"
-            class="form-control" ngModel />
+            class="form-control" ngModel ></textarea>
         </div>
       </div>
       <br />
       <div class="modal-footer">
         <button
           type="submit"
-          class="btn btn-outline-dark"
+          class="btn btn-primary"
           (click)="c('Save click')"
         >
           Agregar
@@ -89,11 +91,10 @@
     <h4 class="modal-title" id="modal-basic-title2">Editar Proyecto</h4>
     <button
       type="button"
-      class="close btn"
+      class="btn-close btn"
       aria-label="Close"
       (click)="modal.dismiss('Cross click')"
     >
-      <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
@@ -107,7 +108,7 @@
       <div class="form-group">
         <label for="descripcionProyecto">Descripcion:</label>
         <div class="input-group">
-          <input formControlName="descripcionProyecto" class="form-control" />
+          <textarea formControlName="descripcionProyecto" class="form-control"></textarea>
         </div>
       </div>
     </form>
@@ -134,11 +135,10 @@
     <h4 class="modal-title">Eliminar Proyecto</h4>
     <button
       type="button"
-      class="close btn"
+      class="btn-close btn"
       aria-label="Close"
       (click)="modal.dismiss('Cross click')"
     >
-      <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">

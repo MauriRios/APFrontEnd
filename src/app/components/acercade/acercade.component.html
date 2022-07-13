@@ -1,4 +1,4 @@
-<div class="container-cards shadow-sm">
+<div class="container-cards card shadow-sm">
   <div class="row" >
     <div class="col-8 col-sm-3 col-lg-11 mb-3">
       <h2>Acerca De</h2>
@@ -9,7 +9,7 @@
     </div>
     <div class="col-3 col-sm-2 col-lg-1">
       <a *ngIf="isAdmin"
-        class="btn gap-1"
+        class="btn btn-edit gap-1"
         data-bs-toggle="modal"
         data-bs-target="#acercaDeModal"
         ><i class="fa-solid fa-pen"></i
@@ -29,7 +29,7 @@
 </div>
 
 <!-- Acerca de Modal Edicion -->
-<div
+<div 
   class="modal fade"
   id="acercaDeModal"
   tabindex="-1"
@@ -42,7 +42,7 @@
         <h4 class="modal-title" id="exampleModalLabel">Editar Mi Informacion:</h4>
         <button
           type="button"
-          class="btn-close"
+          class="btn-close btn"
           data-bs-dismiss="modal"
           aria-label="Close"
         ></button>

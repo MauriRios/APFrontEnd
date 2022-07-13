@@ -2,6 +2,17 @@
   box-sizing: border-box;
 }
 
+body {
+  background: var(--primaryColor);
+}
+
+.card {
+  background: var(--cardColor);
+}
+.modal-header{
+  background: var(--cardColor);
+}
+
 h1,
 h2,
 h3,
@@ -9,6 +20,7 @@ h4,
 h5,
 h6 {
   font-family: "Playfair Display", serif;
+  color: var(--textPrimary);
 }
 
 h1 {
@@ -30,10 +42,12 @@ h4 {
 h5 {
   font-size: 13px;
   margin: 5px;
+  
 }
 h6 {
   font-size: 11px;
   margin: 5px;
+  
 }
 
 p,
@@ -41,10 +55,11 @@ span {
   font-family: "Playfair Display", serif;
   font-size: 15px;
   margin: 2px;
+  color: var(--textPrimary);
 }
 
 .card_header {
-  border: 1px solid rgba(0, 0, 0, 20%);
+  border: 1px solid var(--cardColorBorder);
   border-radius: 30px;
   margin: 2em 2em 1.5em 2em;
   display: grid;
@@ -66,6 +81,17 @@ span {
   bottom: 23em;
 }
 
+.btn{
+  color: var(--textPrimary)
+}
+
+.btn-edit:hover {
+  transform: scale(1.2);
+  background-color: transparent;
+  border-color: transparent;
+  transition: background-color 1.25s;
+  color: var(--textPrimary)
+}
 .fa-instagram {
   font-size: 35px;
 }
