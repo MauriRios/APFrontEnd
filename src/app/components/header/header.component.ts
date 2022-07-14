@@ -13,6 +13,8 @@ export class HeaderComponent implements OnInit {
 persona: Persona = new Persona(0,"", "", "", "");
 isAdmin = false;
 roles: string[];
+URL = 'https://backmiportfolio.herokuapp.com/';
+URL2 = 'https://localhost:8080/'
 
   constructor(public personaService: PersonaService,
               private tokenService : TokenService,) { 

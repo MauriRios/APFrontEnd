@@ -13,6 +13,8 @@ export class AcercadeComponent implements OnInit {
   acercaDe: AcercaDe = new AcercaDe(0,"","");
   isAdmin = false;
   roles: string[];
+  URL = 'https://backmiportfolio.herokuapp.com/';
+  URL2 = 'https://localhost:8080/'
 
   constructor(public acercaDeService: AcercaDeService,
               private tokenService : TokenService,) { }

@@ -20,6 +20,9 @@ export class ExperienciaComponent implements OnInit {
   private deleteId: number;
   roles: string[];
   isAdmin = false;
+  URL = 'https://backmiportfolio.herokuapp.com/';
+  URL2 = 'https://localhost:8080/'
+  
 
   constructor(config: NgbModalConfig,
     private tokenService : TokenService,
@@ -57,7 +60,6 @@ export class ExperienciaComponent implements OnInit {
       }
     )
   }
-
 
   onSubmit(f: NgForm) {
     // console.log(f.form.value);
@@ -128,6 +130,4 @@ export class ExperienciaComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-
-
 }

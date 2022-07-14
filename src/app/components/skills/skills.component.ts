@@ -20,6 +20,8 @@ export class SkillsComponent implements OnInit {
   private deleteId: number;
   isAdmin = false;
   roles: string[];
+  URL = 'https://backmiportfolio.herokuapp.com/';
+  URL2 = 'https://localhost:8080/'
 
   constructor(config: NgbModalConfig, 
     private tokenService : TokenService,
