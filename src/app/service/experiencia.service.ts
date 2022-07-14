@@ -8,7 +8,10 @@ import { Experiencia } from '../model/experiencia.model';
   providedIn: 'root',
 })
 export class ExperienciaService {
-  URL = 'http://localhost:8080/experiencia';
+
+
+  URL = 'https://backmiportfolio.herokuapp.com/experiencia'
+  // 'http://localhost:8080/experiencia';
 
   experiencia: Experiencia = {
     empresa: '',

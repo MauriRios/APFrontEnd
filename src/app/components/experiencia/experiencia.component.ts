@@ -50,7 +50,7 @@ export class ExperienciaComponent implements OnInit {
   }
 
   getExperiencias(){
-    this.httpClient.get<any>('http://localhost:8080/experiencia/traer').subscribe(
+    this.httpClient.get<any>('https://backmiportfolio.herokuapp.com/experiencia/traer').subscribe(
       response =>{
         // console.log(response);
         this.experiencias = response;
@@ -61,7 +61,7 @@ export class ExperienciaComponent implements OnInit {
 
   onSubmit(f: NgForm) {
     // console.log(f.form.value);
-    const url = 'http://localhost:8080/experiencia/crear';
+    const url = 'https://backmiportfolio.herokuapp.com/experiencia/crear';
     this.httpClient.post(url, f.value)
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
@@ -85,7 +85,7 @@ export class ExperienciaComponent implements OnInit {
   }
 
   onSave() {
-    const editURL = 'http://localhost:8080/experiencia/' + 'editar/'  + this.editForm.value.id ;
+    const editURL = 'https://backmiportfolio.herokuapp.com/experiencia/' + 'editar/'  + this.editForm.value.id ;
     this.httpClient.put(editURL, this.editForm.value)
       .subscribe((results) => {
         this.ngOnInit();
@@ -102,7 +102,7 @@ export class ExperienciaComponent implements OnInit {
   }
 
   onDelete() {
-    const deleteURL = 'http://localhost:8080/experiencia/' +  'borrar/'+ this.deleteId ;
+    const deleteURL = 'https://backmiportfolio.herokuapp.com/experiencia/' +  'borrar/'+ this.deleteId ;
     this.httpClient.delete(deleteURL)
       .subscribe((results) => {
         this.ngOnInit();

@@ -47,7 +47,7 @@ export class SkillsComponent implements OnInit {
   }
 
   getSkill(){
-    this.httpClient.get<any>('http://localhost:8080/skill/traer').subscribe(
+    this.httpClient.get<any>('https://backmiportfolio.herokuapp.com/skill/traer').subscribe(
       response =>{
         // console.log(response);
         this.skills = response;
@@ -57,7 +57,7 @@ export class SkillsComponent implements OnInit {
 
   onSubmit(f: NgForm) {
     // console.log(f.form.value);
-    const url = 'http://localhost:8080/skill/crear';
+    const url = 'https://backmiportfolio.herokuapp.com/skill/crear';
     this.httpClient.post(url, f.value)
       .subscribe((result) => {
         this.ngOnInit();
@@ -80,7 +80,7 @@ export class SkillsComponent implements OnInit {
   }
 
   onSave() {
-    const editURL = 'http://localhost:8080/skill/' + 'editar/'  + this.editForm.value.id ;
+    const editURL = 'https://backmiportfolio.herokuapp.com/skill/' + 'editar/'  + this.editForm.value.id ;
     this.httpClient.put(editURL, this.editForm.value)
       .subscribe((results) => {
         this.ngOnInit();
@@ -97,7 +97,7 @@ export class SkillsComponent implements OnInit {
   }
 
   onDelete() {
-    const deleteURL = 'http://localhost:8080/skill/' +  'borrar/'+ this.deleteId ;
+    const deleteURL = 'https://backmiportfolio.herokuapp.com/skill/' +  'borrar/'+ this.deleteId ;
     this.httpClient.delete(deleteURL)
       .subscribe((results) => {
         this.ngOnInit();

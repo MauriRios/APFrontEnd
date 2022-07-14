@@ -8,7 +8,9 @@ import { Proyecto } from '../model/proyecto.model';
 })
 export class ProyectoService {
 
-  URL = 'http://localhost:8080/proyecto/';
+  URL = 'https://backmiportfolio.herokuapp.com/proyecto' 
+  
+  //'http://localhost:8080/proyecto/';
 
   constructor(private http: HttpClient) { }
 

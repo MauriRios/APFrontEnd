@@ -49,7 +49,7 @@ export class EducacionComponent implements OnInit {
   }
 
   getEducacion(){
-    this.httpClient.get<any>('http://localhost:8080/educacion/traer').subscribe(
+    this.httpClient.get<any>('https://backmiportfolio.herokuapp.com/educacion/traer').subscribe(
       response =>{
         // console.log(response);
         this.educaciones =response;
@@ -60,7 +60,7 @@ export class EducacionComponent implements OnInit {
 
   onSubmit(f: NgForm) {
     // console.log(f.form.value);
-    const url = 'http://localhost:8080/educacion/crear';
+    const url = 'https://backmiportfolio.herokuapp.com/educacion/crear';
     this.httpClient.post(url, f.value)
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
@@ -84,7 +84,7 @@ export class EducacionComponent implements OnInit {
   }
 
   onSave() {
-    const editURL = 'http://localhost:8080/educacion/' + 'editar/'  + this.editForm.value.id ;
+    const editURL = 'https://backmiportfolio.herokuapp.com/educacion/' + 'editar/'  + this.editForm.value.id ;
     this.httpClient.put(editURL, this.editForm.value)
       .subscribe((results) => {
         this.ngOnInit();
@@ -101,7 +101,7 @@ export class EducacionComponent implements OnInit {
   }
 
   onDelete() {
-    const deleteURL = 'http://localhost:8080/educacion/' +  'borrar/'+ this.deleteId ;
+    const deleteURL = 'https://backmiportfolio.herokuapp.com/educacion/' +  'borrar/'+ this.deleteId ;
     this.httpClient.delete(deleteURL)
       .subscribe((results) => {
         this.ngOnInit();

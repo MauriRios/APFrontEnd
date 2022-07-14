@@ -49,7 +49,7 @@ export class ProyectosComponent implements OnInit {
   }
 
   getProyectos(){
-    this.httpClient.get<any>('http://localhost:8080/proyecto/traer').subscribe(
+    this.httpClient.get<any>('https://backmiportfolio.herokuapp.com/traer').subscribe(
       response =>{
         // console.log(response);
         this.proyectos = response;
@@ -60,7 +60,7 @@ export class ProyectosComponent implements OnInit {
 
   onSubmit(f: NgForm) {
     // console.log(f.form.value);
-    const url = 'http://localhost:8080/proyecto/crear';
+    const url = 'https://backmiportfolio.herokuapp.com/proyecto/crear';
     this.httpClient.post(url, f.value)
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
@@ -82,7 +82,7 @@ export class ProyectosComponent implements OnInit {
   }
 
   onSave() {
-    const editURL = 'http://localhost:8080/proyecto/' + 'editar/'  + this.editForm.value.id ;
+    const editURL = 'https://backmiportfolio.herokuapp.com/proyecto/' + 'editar/'  + this.editForm.value.id ;
     this.httpClient.put(editURL, this.editForm.value)
       .subscribe((results) => {
         this.ngOnInit();
@@ -99,7 +99,7 @@ export class ProyectosComponent implements OnInit {
   }
 
   onDelete(): void {
-    const deleteURL = 'http://localhost:8080/proyecto/' +  'borrar/'+ this.deleteId ;
+    const deleteURL = 'https://backmiportfolio.herokuapp.com/proyecto/' +  'borrar/'+ this.deleteId ;
     this.httpClient.delete(deleteURL)
       .subscribe((results) => {
         this.ngOnInit();
