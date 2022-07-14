@@ -49,7 +49,7 @@ export class ProyectosComponent implements OnInit {
   }
 
   getProyectos(){
-    this.httpClient.get<any>('https://backmiportfolio.herokuapp.com/traer').subscribe(
+    this.httpClient.get<any>('https://backmiportfolio.herokuapp.com/proyecto/traer').subscribe(
       response =>{
         // console.log(response);
         this.proyectos = response;
