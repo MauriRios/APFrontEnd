@@ -89,21 +89,12 @@ span {
   transform: scale(1.2);
   background-color: transparent;
   border-color: transparent;
-  transition: background-color 1.25s;
   color: var(--textPrimary)
-}
-.fa-instagram {
-  font-size: 35px;
-}
-.fa-linkedin {
-  font-size: 35px;
+
 }
 
-.fa-right-to-bracket {
-  font-size: 35px;
-}
 .logo-img {
-  width: 100px;
+  width: 120px;
   height: 100px;
 }
 
@@ -111,6 +102,7 @@ span {
   left: 14em;
   position: relative;
   bottom: 2em;
+
 }
 
 .img_banner {
@@ -131,8 +123,8 @@ span {
 
 .img_argentinaprogramanavbar {
   width: 120px;
-  height: 90px;
-  border-radius: 20px;
+  height: 80px;
+  padding: 0;
 }
 
 .container-cards {
@@ -160,12 +152,12 @@ span {
     height: 20em;
   }
   .card_header {
-    height: 32em;
+    height: 34em;
   }
   .edit-header {
     left: 12em;
     position: relative;
-    bottom: 0em;
+    bottom: 1em;
   }
 }
 
@@ -177,14 +169,14 @@ span {
     left: 2em;
   }
   .card_header_text {
-    top: -7em;
+    top: -11em;
     left: 4em;
   }
   .img_banner {
     height: 20em;
   }
   .card_header {
-    height: 35em;
+    height: 33em;
   }
   .edit-header {
     left: 9em;
@@ -198,7 +190,7 @@ span {
     height: 7em;
   }
   .card_header_text {
-    top: -10em;
+    top: -12em;
     left: 2em;
   }
   .edit-header {
