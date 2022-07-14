@@ -9,7 +9,7 @@ import { AcercaDe } from '../model/acercade.model';
 export class AcercaDeService {
 
 
-  URL = 'https://backmiportfolio.herokuapp.com/acercade'
+  URL = 'https://backmiportfolio.herokuapp.com/acercade/'
   // URL = 'http://localhost:8080/acercade/';
 
   constructor(private http: HttpClient) { }

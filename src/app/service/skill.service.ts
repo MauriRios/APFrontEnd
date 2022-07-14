@@ -8,7 +8,7 @@ import { Skill } from '../model/skill.model';
 })
 export class SkillService {
 
-  URL = 'https://backmiportfolio.herokuapp.com/skill' 
+  URL = 'https://backmiportfolio.herokuapp.com/skill/' 
   //'http://localhost:8080/skill/'
 
   constructor(private http: HttpClient) { }

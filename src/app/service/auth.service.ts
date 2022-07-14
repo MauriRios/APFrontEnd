@@ -12,7 +12,7 @@ import { JwtDTO } from '../model/jwt-dto';
 })
 export class AuthService {
 
-  authURL = 'https://backmiportfolio.herokuapp.com/auth' 
+  authURL = 'https://backmiportfolio.herokuapp.com/auth/' 
   
   //'http://localhost:8080/auth/';
 
