@@ -14,7 +14,8 @@ export class NavbarComponent implements OnInit {
   persona: Persona = new Persona(0,"", "", "", "");
 
   isLogged = false;
-  isDefault = true;
+  theme: string;
+  isDefault: string;
   isAdmin = false;
   roles: string[];
   nombreUsuario = '';
@@ -22,7 +23,9 @@ export class NavbarComponent implements OnInit {
   constructor(public personaService: PersonaService,
               private tokenService: TokenService,
               private themeService: ThemeService
-              ) { this.changeTheme(this.themeService.getTheme()) }
+              ) { 
+      this.changeTheme(this.themeService.getTheme())
+    }
 
   ngOnInit(): void {
     this.personaService.getPersona().subscribe(data => {this.persona = data});
@@ -32,6 +35,7 @@ export class NavbarComponent implements OnInit {
     } else {
       this.isLogged = false;
     };
+
     this.roles = this.tokenService.getAuthorities();
     this.roles.forEach(rol => {
       if (rol === 'ROLE_ADMIN') {
@@ -47,6 +51,7 @@ export class NavbarComponent implements OnInit {
 
   changeTheme(name: string): void {
     this.themeService.setTheme(name);
+    }
   }
 
-}
+

@@ -6,6 +6,11 @@ body {
   background: var(--primaryColor);
 }
 
+button:active {
+  background-color: transparent;
+  box-shadow: 0 0 0 0px transparent, 0 0 0 0px transparent;
+}
+
 .card {
   background: var(--cardColor);
 }

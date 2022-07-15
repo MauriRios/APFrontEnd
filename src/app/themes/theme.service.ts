@@ -7,6 +7,9 @@ import { IThemeProperties } from './theme.interface';
   providedIn: 'root',
 })
 export class ThemeService {
+
+  isDefault = false;
+
   constructor(@Inject(DOCUMENT) private document: Document) {}
 
   getTheme(): string {
@@ -19,8 +22,9 @@ export class ThemeService {
     Object.keys(theme).forEach((key: string) => {
       this.document.documentElement.style.setProperty(
         `--${key}`,
-        (theme as any)[key]
-      );
+        (theme as any)[key] 
+      )
+      
     });
   }
 
