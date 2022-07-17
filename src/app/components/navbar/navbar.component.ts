@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Persona } from 'src/app/model/persona.model';
 import { PersonaService } from 'src/app/service/persona.service';
 import { TokenService } from 'src/app/service/token.service';
+import { IThemeProperties } from 'src/app/themes/theme.interface';
 import { ThemeService } from 'src/app/themes/theme.service';
 
 @Component({
@@ -12,10 +13,8 @@ import { ThemeService } from 'src/app/themes/theme.service';
 export class NavbarComponent implements OnInit {
 
   persona: Persona = new Persona(0,"", "", "", "");
-
+  isDefault = false;
   isLogged = false;
-  theme: string;
-  isDefault: string;
   isAdmin = false;
   roles: string[];
   nombreUsuario = '';
@@ -28,7 +27,8 @@ export class NavbarComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.personaService.getPersona().subscribe(data => {this.persona = data});
+    this.personaService.getPersona()
+    .subscribe(data => {this.persona = data});
 
     if (this.tokenService.getToken()) {
       this.isLogged = true;
@@ -42,6 +42,7 @@ export class NavbarComponent implements OnInit {
         this.isAdmin = true;
       }
     });
+
   }
 
   onLogOut(): void {
@@ -49,9 +50,11 @@ export class NavbarComponent implements OnInit {
     window.location.reload();
   }
 
-  changeTheme(name: string): void {
+  changeTheme(name: string) {
     this.themeService.setTheme(name);
+      this.isDefault = !this.isDefault
     }
+
   }
 
 

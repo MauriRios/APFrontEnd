@@ -8,7 +8,6 @@ import { IThemeProperties } from './theme.interface';
 })
 export class ThemeService {
 
-  isDefault = false;
 
   constructor(@Inject(DOCUMENT) private document: Document) {}
 

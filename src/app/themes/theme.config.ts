@@ -8,7 +8,7 @@ export const THEMES: ITheme = {
         cardColor: '#e6e6d4',
         cardColorBorder: 'rgba(0, 0, 0, 20%)',
         textPrimary: '#000',
-        displayButton: 'none',
+        
 
         
 },
@@ -18,6 +18,6 @@ export const THEMES: ITheme = {
         cardColor: '#212529',
         cardColorBorder: '#212529',
         textPrimary: 'white',
-        displayButton: 'none',
+        
 },
 };

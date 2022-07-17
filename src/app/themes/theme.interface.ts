@@ -1,12 +1,13 @@
 
+
 export interface IThemeProperties {
     primaryColor: string;
     secondaryColor: string;
     cardColor: String;
     cardColorBorder: String;
     textPrimary: string;
-    displayButton: string;
-    
+   
+
     // Se pueden añadir + propiedades si queremos ampliar
 }
 

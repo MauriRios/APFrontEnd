@@ -1,9 +1,9 @@
 <nav class="container-fluid shadow-sm bg-dark">
-    <div class="row container-fluid align-items-baseline">
+    <div class="row container-fluid ">
       <div class="col-12 col-sm-4">
         <span>
           <img  [routerLink]="'/home'"
-              class="btn img_argentinaprogramanavbar"
+              class=" img_argentinaprogramanavbar"
               src="../assets/img\APLogo-20-20.png"
               alt="Argentina Programa"
               />
@@ -25,19 +25,22 @@
       <i class="fab fa-linkedin fa-2x"></i></a>
       </button>
 
-        <button id="defaultTheme"
+
+        <button *ngIf="isDefault"
         class="btn btn-edit btn-dark"
         (click)="changeTheme('default')"
         placement="bottom" ngbTooltip="Modo Claro"
         ><i  class="fa-solid fa-sun text-primary fa-2x"></i>
       </button>
-      <button id="darkTheme"
-          (click)="changeTheme('dark')"
-          class="btn btn-edit btn-dark"
-          placement="bottom" ngbTooltip="Modo Oscuro"
-          ><i class="fa-solid text-primary fa-moon fa-2x"></i>
-        </button>
-      
+
+        <button *ngIf="!isDefault"
+        (click)="changeTheme('dark')"
+        class="btn btn-edit btn-dark"
+        placement="bottom" ngbTooltip="Modo Oscuro"
+        ><i class="fa-solid text-primary fa-moon fa-2x"></i>
+      </button>
+
+
         <button *ngIf="!isLogged" class="btn btn-edit"
         placement="bottom" ngbTooltip="Iniciar Sesión">
           <a  routerLink="/login"><i class="fa fa-2x fa-sign-in-alt"></i></a>
@@ -48,4 +51,6 @@
         </button>
       </div>
   </div>
+  
+
 </nav>

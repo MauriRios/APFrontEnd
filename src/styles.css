@@ -127,6 +127,7 @@ span {
 }
 
 .img_argentinaprogramanavbar {
+  cursor: pointer;
   width: 120px;
   height: 80px;
   padding: 0;
