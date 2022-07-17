@@ -27,6 +27,7 @@ import { RegistroComponent } from './auth/registro.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { interceptorProvider } from './interceptors/interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
 
@@ -42,6 +43,7 @@ import { ToastrModule } from 'ngx-toastr';
     MainComponent,
     LoginComponent,
     RegistroComponent,
+    FooterComponent,
 
   ],
   imports: [

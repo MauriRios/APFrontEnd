@@ -1,4 +1,4 @@
-<nav class="container-fluid shadow-sm bg-dark">
+<nav class="container-fluid shadow-sm card">
     <div class="row container-fluid ">
       <div class="col-12 col-sm-4">
         <span>
@@ -27,7 +27,7 @@
 
 
         <button *ngIf="isDefault"
-        class="btn btn-edit btn-dark"
+        class="btn btn-edit "
         (click)="changeTheme('default')"
         placement="bottom" ngbTooltip="Modo Claro"
         ><i  class="fa-solid fa-sun text-primary fa-2x"></i>
@@ -35,7 +35,7 @@
 
         <button *ngIf="!isDefault"
         (click)="changeTheme('dark')"
-        class="btn btn-edit btn-dark"
+        class="btn btn-edit "
         placement="bottom" ngbTooltip="Modo Oscuro"
         ><i class="fa-solid text-primary fa-moon fa-2x"></i>
       </button>
