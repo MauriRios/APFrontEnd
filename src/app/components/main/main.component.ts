@@ -9,15 +9,24 @@ import { ExperienciaService } from 'src/app/service/experiencia.service';
 })
 
 export class MainComponent implements OnInit {
-  
 
+  windowScrolled = false;
 
   constructor(private experienciaService: ExperienciaService,
               
     ) { }
 
-  ngOnInit(): void {
+
+  ngOnInit() {
+    
+    window.addEventListener('scroll', () => {
+      this.windowScrolled = window.pageYOffset !== 0;
+    });
   }
 
+  scrollToTop(): void {
+    window.scrollTo(0, 0);
+  
+  }
 
 }
