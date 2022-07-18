@@ -13,19 +13,15 @@ import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './components/main/main.component';
-import { ExperienciaService } from './service/experiencia.service';
 import { PersonaService } from './service/persona.service';
-import { SkillService } from './service/skill.service';
-import { EducacionService } from './service/educacion.service';
 import { AcercaDeService } from './service/acerca-de.service';
-import { ProyectoService } from './service/proyecto.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './auth/login.component';
 import { RegistroComponent } from './auth/registro.component';
 
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-import { interceptorProvider } from './interceptors/interceptor.service';
+import { interceptorProvider } from './service/interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -59,12 +55,9 @@ import { FooterComponent } from './components/footer/footer.component';
     
     
   ],
-  providers: [ExperienciaService,
+  providers: [
               PersonaService,
-              SkillService,
-              EducacionService,
               AcercaDeService,
-              ProyectoService,
               interceptorProvider
   ],
   bootstrap: [AppComponent]

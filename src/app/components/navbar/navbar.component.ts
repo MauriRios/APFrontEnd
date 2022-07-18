@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Persona } from 'src/app/model/persona.model';
 import { PersonaService } from 'src/app/service/persona.service';
 import { TokenService } from 'src/app/service/token.service';
-import { IThemeProperties } from 'src/app/themes/theme.interface';
-import { ThemeService } from 'src/app/themes/theme.service';
+import { ThemeService } from 'src/app/service/theme.service';
 
 @Component({
   selector: 'app-navbar',

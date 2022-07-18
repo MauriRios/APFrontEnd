@@ -27,7 +27,7 @@ export class EducacionComponent implements OnInit {
     private modalService: NgbModal,
     private fb: FormBuilder,
     public httpClient:HttpClient) {
-    // customize default values of modals used by this component tree
+
     config.backdrop = 'static';
     config.keyboard = false;
   }

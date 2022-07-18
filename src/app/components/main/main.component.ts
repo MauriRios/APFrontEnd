@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ExperienciaService } from 'src/app/service/experiencia.service';
+
 
 
 @Component({
@@ -12,9 +12,7 @@ export class MainComponent implements OnInit {
 
   windowScrolled = false;
 
-  constructor(private experienciaService: ExperienciaService,
-              
-    ) { }
+  constructor() { }
 
 
   ngOnInit() {
