@@ -19,7 +19,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './auth/login.component';
 import { RegistroComponent } from './auth/registro.component';
 
-
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { interceptorProvider } from './service/interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
