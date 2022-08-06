@@ -13,7 +13,10 @@
   </div>
   <div class="row mb-3" *ngFor="let experiencia of experiencias">
     <div class="col-4 col-sm-3 col-lg-2 text-center">
-      <img class="logo-img img-fluid" src="{{ experiencia.img }}" />
+      <img class="logo-img img-fluid" 
+      src="{{ experiencia.img }}" 
+      accept="image/*"
+      />
     </div>
 
     <div class="col-5 col-sm-7 col-lg-9">
@@ -90,12 +93,12 @@
       <div class="form-group">
         <label for="img">Imagen:</label>
         <div class="input-group">
-          <input
-            id="img"
-            name="img"
-            class="form-control"
-            ngModel
-          />
+          <input type="file" 
+          alife-file-to-base64 (onFileChanged)="onFileChanged($event)"
+          class="form-control"
+          name="img" 
+          ngModel>
+          <img src="{{this.editForm.value.img}}" height="100px">
         </div>
       </div>
       <br />
@@ -148,7 +151,11 @@
       <div class="form-group">
         <label for="img">Imagen:</label>
         <div class="input-group">
-          <input formControlName="img" class="form-control" />
+          <input 
+          type="file" alife-file-to-base64 (onFileChanged)="onFileChanged($event)"
+          formControlName="img"
+          class="form-control" 
+          /><img src="{{this.editForm.value.img}}" height="100px">
         </div>
       </div>
     </form>

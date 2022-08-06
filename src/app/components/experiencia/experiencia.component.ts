@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Experiencia } from 'src/app/model/experiencia.model';
 import { TokenService } from 'src/app/service/token.service';
@@ -14,6 +15,7 @@ import { TokenService } from 'src/app/service/token.service';
 })
 export class ExperienciaComponent implements OnInit {
 
+  base64: string = "";
   experiencias: Experiencia[];
   closeResult: string;
   editForm: FormGroup;
@@ -28,7 +30,9 @@ export class ExperienciaComponent implements OnInit {
     private tokenService : TokenService,
     private modalService: NgbModal,
     private fb: FormBuilder,
-    public httpClient:HttpClient) {
+    public httpClient:HttpClient,
+    private sanitizer: DomSanitizer) {
+
     config.backdrop = 'static';
     config.keyboard = false;
     
@@ -52,8 +56,15 @@ export class ExperienciaComponent implements OnInit {
     });
   }
 
+
+  onFileChanged(e:any):void {
+    this.base64 = e[0].base64;
+    this.editForm.value.img = this.base64;
+  }
+
   getExperiencias(){
-    this.httpClient.get<any>('https://backmiportfolio.herokuapp.com/experiencia/traer').subscribe(
+    this.httpClient.get<any>('https://backmiportfolio.herokuapp.com/experiencia/traer')
+    .subscribe(
       response =>{
         // console.log(response);
         this.experiencias = response;
@@ -61,10 +72,10 @@ export class ExperienciaComponent implements OnInit {
     )
   }
 
-  onSubmit(f: NgForm) {
-    // console.log(f.form.value);
+  onSubmit(editForm: NgForm) {
+    // console.log(editForm.form.value);
     const url = 'https://backmiportfolio.herokuapp.com/experiencia/crear';
-    this.httpClient.post(url, f.value)
+    this.httpClient.post(url, this.editForm.value)
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
       });

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Educacion } from 'src/app/model/educacion.model';
 import { TokenService } from 'src/app/service/token.service';
@@ -13,6 +14,7 @@ import { TokenService } from 'src/app/service/token.service';
 })
 export class EducacionComponent implements OnInit {
 
+  base64: string = "";
   educaciones: Educacion[];
   closeResult: string;
   editForm: FormGroup;
@@ -26,14 +28,16 @@ export class EducacionComponent implements OnInit {
     private tokenService : TokenService,
     private modalService: NgbModal,
     private fb: FormBuilder,
-    public httpClient:HttpClient) {
+    public httpClient:HttpClient,
+    private sanitizer: DomSanitizer) {
 
     config.backdrop = 'static';
     config.keyboard = false;
   }
 
   ngOnInit(): void {
-    this.getEducacion();
+    //Traer educacines y actualizar el formulario
+    this.getEducaciones();
     this.editForm = this.fb.group({
       id: [''],
       titulo: [''],
@@ -42,6 +46,8 @@ export class EducacionComponent implements OnInit {
       img: [''],
     }),
 
+
+    //Metodo para saber si estas logeado como admin
     this.roles = this.tokenService.getAuthorities();
     this.roles.forEach(rol => {
       if (rol === 'ROLE_ADMIN') {
@@ -50,8 +56,17 @@ export class EducacionComponent implements OnInit {
     });
   }
 
-  getEducacion(){
-    this.httpClient.get<any>('https://backmiportfolio.herokuapp.com/educacion/traer').subscribe(
+//Metodo para ver la imagen en el modal y actualizarla
+  onFileChanged(e:any):void {
+    this.base64 = e[0].base64;
+    this.editForm.value.img = this.base64;
+  }
+
+
+  //Metodo para traer las educaciones
+  getEducaciones(){
+    this.httpClient.get<any>('https://backmiportfolio.herokuapp.com/educacion/traer')
+    .subscribe(
       response =>{
         // console.log(response);
         this.educaciones =response;
@@ -60,16 +75,18 @@ export class EducacionComponent implements OnInit {
   }
 
 
-  onSubmit(f: NgForm) {
-    // console.log(f.form.value);
+  //Metodo para agregar
+  onSubmit(editForm: NgForm) {
+    // console.log(editForm.form.value);
     const url = 'https://backmiportfolio.herokuapp.com/educacion/crear';
-    this.httpClient.post(url, f.value)
+    this.httpClient.post(url, this.editForm.value)
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
       });
     this.modalService.dismissAll(); // dismiss the modal
   }
 
+  //Metodo para abrir el modal de editar
   openEdit(targetModal, educacion:Educacion) {
     this.modalService.open(targetModal, {
       centered: true,
@@ -85,6 +102,7 @@ export class EducacionComponent implements OnInit {
     });
   }
 
+  //Metodo para guardar lo editado
   onSave() {
     const editURL = 'https://backmiportfolio.herokuapp.com/educacion/' + 'editar/'  + this.editForm.value.id ;
     this.httpClient.put(editURL, this.editForm.value)
@@ -94,6 +112,7 @@ export class EducacionComponent implements OnInit {
       });
   }
 
+  //Metodo para abrir el modal de eliminar
   openDelete(targetModal, educacion:Educacion) {
     this.deleteId = educacion.id;
     this.modalService.open(targetModal, {
@@ -102,6 +121,7 @@ export class EducacionComponent implements OnInit {
     });
   }
 
+  //Metodo Delete, Borra un registro
   onDelete() {
     const deleteURL = 'https://backmiportfolio.herokuapp.com/educacion/' +  'borrar/'+ this.deleteId ;
     this.httpClient.delete(deleteURL)
@@ -111,6 +131,7 @@ export class EducacionComponent implements OnInit {
       });
   }
 
+  //Metodo para abrir el modal de agregar
 
   onAgregar(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -120,6 +141,7 @@ export class EducacionComponent implements OnInit {
     });
   }
 
+  //Metodo para cerrar el modal con esc y click fuera del modal
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

@@ -23,6 +23,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { interceptorProvider } from './service/interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
 import { FooterComponent } from './components/footer/footer.component';
+import { AlifeFileToBase64Module } from 'alife-file-to-base64';
+
 
 @NgModule({
 
@@ -50,7 +52,8 @@ import { FooterComponent } from './components/footer/footer.component';
     routing,
     NgbModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AlifeFileToBase64Module
     
     
   ],

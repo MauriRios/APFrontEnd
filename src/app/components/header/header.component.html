@@ -82,9 +82,9 @@
             <label>Imagen:</label>
             <input
               class="form-control"
-              type="text"
+              type="file" alife-file-to-base64
+              (onFileChanged)="onFileChanged($event)"
               placeholder="Imagen de Perfil"
-              [(ngModel)]="persona.img"
               name="img"
             />
           </div>

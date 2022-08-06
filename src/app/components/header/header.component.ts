@@ -46,5 +46,9 @@ URL2 = 'https://localhost:8080/'
 
     // console.log( this.persona )
   }
+  onFileChanged(event){
+    console.log(event);
+    this.persona.img = event[0].base64;
+  }
 }
 
