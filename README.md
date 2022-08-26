@@ -20,7 +20,7 @@ Este proyecto fue mi primer proyecto que realize en programacion, se trata de un
 
 DER de base de datos:
 
-<img src="https://files.fm/u/gxjwy5tve" style="max-width: 100%; display: inline-block;" />
+<img src="https://github.com/MauriRios/APFrontEnd/blob/main/src/assets/img/DER.jpg?raw=true" style="max-width: 100%; display: inline-block;" />
 
 
 
