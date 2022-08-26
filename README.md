@@ -1,4 +1,4 @@
-#Proyecto Argentina Programa Portfolio Personal
+<h1>## Proyecto Argentina Programa Portfolio Personal<h1/>
 
 Este proyecto fue mi primer proyecto que realize en programacion, se trata de un portfolio web SPA, completamente editable consumiendo una API realizada por mi en Java para poder editar y traer de la base de datos mi informacion personal, fue un curso completamente autogestionado segui la maquetacion que fue dada en el curso y pude darle la funcionalidades requeridadas, las cuales son:
 
@@ -13,16 +13,10 @@ Este proyecto fue mi primer proyecto que realize en programacion, se trata de un
 
 ## Herramientas utilizadas en el desarrollo
 
-- Git GitHub Versionado de la app
+- Git/GitHub Versionado de la app
 - Front-End en Angular + Bootstrap 
-- CRUD en Java + Springboot
-- MYSQL en base de datos
 
-DER de base de datos:
+## 
 
-<img src="https://github.com/MauriRios/APFrontEnd/blob/main/src/assets/img/DER.jpg?raw=true" style="max-width: 100%; display: inline-block;" />
-
-
-
-## Build
+## Agradecimientos
 
