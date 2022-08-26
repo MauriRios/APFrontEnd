@@ -1,22 +1,34 @@
-<h1>## Proyecto Argentina Programa Portfolio Personal<h1/>
+<h1>## Proyecto Argentina Programa Portfolio Personal (FrontEnd)</h1>
 
-Este proyecto fue mi primer proyecto que realize en programacion, se trata de un portfolio web SPA, completamente editable consumiendo una API realizada por mi en Java para poder editar y traer de la base de datos mi informacion personal, fue un curso completamente autogestionado segui la maquetacion que fue dada en el curso y pude darle la funcionalidades requeridadas, las cuales son:
+Este proyecto fue mi primer proyecto que realize en programacion, se trata de un portfolio web SPA(Single Page Aplication), completamente editable consumiendo una API realizada por mi en Java para poder editar y traer de la base de datos mi informacion personal, fue un curso completamente autogestionado segui la maquetacion que fue dada en el curso y pude darle la funcionalidades requeridadas, las cuales son:
 
-- Navbar: En este modulo tenemos la barra de navegacion, la cual posee el logo de Argentina Programa, las redes sociales, boton de login y boton para el modo nocturno
-- Header: En este modulo tenemos banner, informacion personal y imagen personal
-- Acerca De: En este modulo tenemos mi informacion personal mas detallada y stack tecnologico manejado hasta el momento
-- Educacion: En este modulo tenemos toda mi informacion academica
-- Experiencia: En este modulo tenemos toda mi informacion laboral
-- Habilidades: En este modulo tenemos toda la informacion de las habilidades tecnicas y blandas
-- Proyectos: En este modulo tenemos toda la informacion de proyectos realizados por mi
-- Footer: En este modulo tenemos la informacion de contacto y nuevamente las redes sociales
+- <b>Navbar:</b> En este modulo tenemos la barra de navegacion, la cual posee el logo de Argentina Programa, las redes sociales, boton de login y boton para el modo nocturno
+- <b>Header:</b> En este modulo tenemos banner, informacion personal y imagen personal
+- <b>Acerca De:</b> En este modulo tenemos mi informacion personal mas detallada y stack tecnologico manejado hasta el momento
+- <b>Educacion:</b> En este modulo tenemos toda mi informacion academica
+- <b>Experiencia:</b> En este modulo tenemos toda mi informacion laboral
+- <b>Habilidades:</b> En este modulo tenemos toda la informacion de las habilidades tecnicas y blandas
+- <b>Proyectos:</b> En este modulo tenemos toda la informacion de proyectos realizados por mi
+- <b>Footer:</b> En este modulo tenemos la informacion de contacto y nuevamente las redes sociales
 
-## Herramientas utilizadas en el desarrollo
+<b>Implementaciones Bonus</b>: 
 
-- Git/GitHub Versionado de la app
-- Front-End en Angular + Bootstrap 
+- Dark Mode (Modo Oscuro)
+- Push to up (Flecha de ir hacia arriba o top de la pagina)
 
-## 
+<h2>## Herramientas utilizadas en el desarrollo</h2>
+
+- <b>Git/GitHub</b> Versionado de la app
+- <b>Angular + Bootstrap</b> 
+
+## Importante
+
+- <b>URL de la Primera version:</b> <a href="https://mauriciorios-c84ac.web.app/home"> Link</a>
+- <b>Contanto:</b> <a href="mailto:mauri.rios991@gmail.com"> Mail</a>,<a href="https://www.linkedin.com/in/mauri-rios/"> Linkedin</a>
 
 ## Agradecimientos
+
+Quiero agradecer a mis compañeros de <a href="https://discord.gg/UBCGfbmq">Discord</a> que sin el apoyo que nos damos a diario y el grupo de estudio que creamos entre todos, hubiera sido mas dificil este proyecto 
+
+
 
