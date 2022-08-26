@@ -2,6 +2,8 @@
 
 <h1>Proyecto Argentina Programa Portfolio Personal (FrontEnd)</h1>
 
+## Descripcion
+
 Este proyecto fue mi primer proyecto que realize en programacion, se trata de un portfolio web SPA(Single Page Aplication), completamente editable consumiendo una API realizada por mi en Java para poder editar y traer de la base de datos mi informacion personal, fue un curso completamente autogestionado segui la maquetacion que fue dada en el curso y pude darle la funcionalidades requeridadas, las cuales son:
 
 - <b>Navbar:</b> En este modulo tenemos la barra de navegacion, la cual posee el logo de Argentina Programa, las redes sociales, boton de login y boton para el modo nocturno
