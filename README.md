@@ -1,3 +1,5 @@
+NOTA: En este repositorio se encuentra todo lo relacionado al Frontend del proyecto, para dirigirse al repositorio del Backend hacer click <a href="https://github.com/MauriRios/BackEnd" target="_blank>aquí.</a>
+
 <h1>Proyecto Argentina Programa Portfolio Personal (FrontEnd)</h1>
 
 Este proyecto fue mi primer proyecto que realize en programacion, se trata de un portfolio web SPA(Single Page Aplication), completamente editable consumiendo una API realizada por mi en Java para poder editar y traer de la base de datos mi informacion personal, fue un curso completamente autogestionado segui la maquetacion que fue dada en el curso y pude darle la funcionalidades requeridadas, las cuales son:
@@ -16,19 +18,19 @@ Este proyecto fue mi primer proyecto que realize en programacion, se trata de un
 - Dark Mode (Modo Oscuro)
 - Push to up (Flecha de ir hacia arriba o top de la pagina)
 
-<h2>## Herramientas utilizadas en el desarrollo</h2>
+<h2>Herramientas utilizadas en el desarrollo</h2>
 
 - <b>Git/GitHub</b> Versionado de la app
 - <b>Angular + Bootstrap</b> 
 
 ## Importante
 
-- <b>URL de la Primera version:</b> <a href="https://mauriciorios-c84ac.web.app/home"> Link</a>
-- <b>Contanto:</b> <a href="mailto:mauri.rios991@gmail.com"> Mail</a>,<a href="https://www.linkedin.com/in/mauri-rios/"> Linkedin</a>
+- <b>URL de la Primera version:</b> <a href="https://mauriciorios-c84ac.web.app/home" target="_blank"> Link</a>
+- <b>Contanto:</b> <a href="mailto:mauri.rios991@gmail.com" target="_blank"> Mail</a>,<a href="https://www.linkedin.com/in/mauri-rios/" target="_blank"> Linkedin</a>
 
 ## Agradecimientos
 
-Quiero agradecer a mis compañeros de <a href="https://discord.gg/UBCGfbmq">Discord</a> que sin el apoyo que nos damos a diario y el grupo de estudio que creamos entre todos, hubiera sido mas dificil este proyecto 
+Quiero agradecer a mis compañeros de <a href="https://discord.gg/UBCGfbmq" target="_blank">Discord</a> que sin el apoyo que nos damos a diario y el grupo de estudio que creamos entre todos, hubiera sido mas dificil este proyecto 
 
 
 
