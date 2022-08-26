@@ -15,8 +15,8 @@ Este proyecto fue mi primer proyecto que realize en programacion, se trata de un
 
 <b>Implementaciones Bonus</b>: 
 
-- Dark Mode (Modo Oscuro)
-- Push to up (Flecha de ir hacia arriba o top de la pagina)
+- <b>Dark Mode</b> (Modo Oscuro)
+- <b>Push to up</b> (Flecha de ir hacia arriba o top de la pagina)
 
 <h2>Herramientas utilizadas en el desarrollo</h2>
 
