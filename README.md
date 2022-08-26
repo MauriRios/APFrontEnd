@@ -1,27 +1,28 @@
-# ArgentinaProgramaMain
+#Proyecto Argentina Programa Portfolio Personal
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+Este proyecto fue mi primer proyecto que realize en programacion, se trata de un portfolio web SPA, completamente editable consumiendo una API realizada por mi en Java para poder editar y traer de la base de datos mi informacion personal, fue un curso completamente autogestionado segui la maquetacion que fue dada en el curso y pude darle la funcionalidades requeridadas, las cuales son:
 
-## Development server
+- Navbar: En este modulo tenemos la barra de navegacion, la cual posee el logo de Argentina Programa, las redes sociales, boton de login y boton para el modo nocturno
+- Header: En este modulo tenemos banner, informacion personal y imagen personal
+- Acerca De: En este modulo tenemos mi informacion personal mas detallada y stack tecnologico manejado hasta el momento
+- Educacion: En este modulo tenemos toda mi informacion academica
+- Experiencia: En este modulo tenemos toda mi informacion laboral
+- Habilidades: En este modulo tenemos toda la informacion de las habilidades tecnicas y blandas
+- Proyectos: En este modulo tenemos toda la informacion de proyectos realizados por mi
+- Footer: En este modulo tenemos la informacion de contacto y nuevamente las redes sociales
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Herramientas utilizadas en el desarrollo
 
-## Code scaffolding
+- Git GitHub Versionado de la app
+- Front-End en Angular + Bootstrap 
+- CRUD en Java + Springboot
+- MYSQL en base de datos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+DER de base de datos:
+
+<img src="https://files.fm/u/gxjwy5tve" style="max-width: 100%; display: inline-block;" />
+
+
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
