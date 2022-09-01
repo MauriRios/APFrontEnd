@@ -134,6 +134,7 @@ export class ExperienciaComponent implements OnInit {
       });
   }
 
+  
 //Metodo para cerrar el modal con esc y click fuera del modal
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
