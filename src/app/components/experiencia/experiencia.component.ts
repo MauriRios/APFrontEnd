@@ -82,7 +82,7 @@ export class ExperienciaComponent implements OnInit {
   //Metodo enviar formulario de agregar
   onSubmit(f: NgForm) {
     f.form.value.img = this.base64;
-    console.log(f.form.value);
+    //console.log(f.form.value);
     this.experienciaService.addExperiencia(f.value)
       .subscribe((result) => {
         this.ngOnInit(); // recarga la tabla
@@ -94,11 +94,11 @@ export class ExperienciaComponent implements OnInit {
   //Abre modal de editar
   openEdit(targetModal, experiencia:Experiencia) {
     this.modalService.open(targetModal, {
-      centered: true,
+      centered: true,   //Setea las propiedades del modal
       backdrop: 'static',
       size: 'lg'
     });
-    this.editForm.patchValue( {
+    this.editForm.patchValue( { //Rellena los valores del formulario
       id: experiencia.id,
       empresa: experiencia.empresa,
       puesto: experiencia.puesto,
@@ -145,4 +145,5 @@ export class ExperienciaComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
 }

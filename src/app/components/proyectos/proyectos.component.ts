@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
 import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Proyecto } from 'src/app/model/proyecto.model';
+import { ProyectosService } from 'src/app/service/proyectos.service';
 import { TokenService } from 'src/app/service/token.service';
 
 
@@ -19,15 +20,15 @@ export class ProyectosComponent implements OnInit {
   private deleteId: number;
   isAdmin = false;
   roles: string[];
-  URL = 'https://backmiportfolio.herokuapp.com/';
-  URL2 = 'https://localhost:8080/'
+
 
   constructor(config: NgbModalConfig, 
+    private proyectosService : ProyectosService,
     private tokenService : TokenService,
     private modalService: NgbModal,
     private fb: FormBuilder,
     public httpClient:HttpClient) {
-    // customize default values of modals used by this component tree
+    
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -50,29 +51,36 @@ export class ProyectosComponent implements OnInit {
     });
   }
 
+  // Traer lista de proyectos
   getProyectos(){
-    this.httpClient.get<any>('https://backmiportfolio.herokuapp.com/proyecto/traer').subscribe(
-      response =>{
-        // console.log(response);
-        this.proyectos = response;
-      }
-    )
+    this.proyectosService.getProyectos()
+    .subscribe(data => (this.proyectos = data));
+    
   }
 
+  //Abrir modal de agregar
+  onAgregar(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
 
+  //Metodo enviar formulario de agregar
   onSubmit(f: NgForm) {
     // console.log(f.form.value);
-    const url = 'https://backmiportfolio.herokuapp.com/proyecto/crear';
-    this.httpClient.post(url, f.value)
+    this.proyectosService.addProyecto(f.value)
       .subscribe((result) => {
-        this.ngOnInit(); // reload the table
+        this.ngOnInit(); // recarga la tabla
       });
-    this.modalService.dismissAll(); // dismiss the modal
+    this.modalService.dismissAll(); // cierra el modal
   }
 
+  //Abre modal de editar
   openEdit(targetModal, proyecto:Proyecto) {
     this.modalService.open(targetModal, {
-      centered: true,
+      centered: true, 
       backdrop: 'static',
       size: 'lg'
     });
@@ -83,15 +91,16 @@ export class ProyectosComponent implements OnInit {
     });
   }
 
+    //Guarda lo editado
   onSave() {
-    const editURL = 'https://backmiportfolio.herokuapp.com/proyecto/' + 'editar/'  + this.editForm.value.id ;
-    this.httpClient.put(editURL, this.editForm.value)
+  this.proyectosService.updateProyecto(this.editForm.value)
       .subscribe((results) => {
         this.ngOnInit();
         this.modalService.dismissAll();
       });
   }
 
+  //Abre modal de eliminar
   openDelete(targetModal, proyecto:Proyecto) {
     this.deleteId = proyecto.id;
     this.modalService.open(targetModal, {
@@ -100,24 +109,16 @@ export class ProyectosComponent implements OnInit {
     });
   }
 
+    //Borra
   onDelete(): void {
-    const deleteURL = 'https://backmiportfolio.herokuapp.com/proyecto/' +  'borrar/'+ this.deleteId ;
-    this.httpClient.delete(deleteURL)
+    this.proyectosService.deleteProyecto(this.deleteId)
       .subscribe((results) => {
         this.ngOnInit();
         this.modalService.dismissAll();
       });
   }
 
-
-  onAgregar(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
+//Metodo para cerrar el modal con esc y click fuera del modal
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -127,6 +128,5 @@ export class ProyectosComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-
-
+  
 }

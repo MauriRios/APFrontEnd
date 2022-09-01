@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { ModalDismissReasons, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Skill } from 'src/app/model/skill.model';
+import { SkillsService } from 'src/app/service/skills.service';
 import { TokenService } from 'src/app/service/token.service';
 
 
@@ -20,10 +21,10 @@ export class SkillsComponent implements OnInit {
   private deleteId: number;
   isAdmin = false;
   roles: string[];
-  URL = 'https://backmiportfolio.herokuapp.com/';
-  URL2 = 'https://localhost:8080/'
+
 
   constructor(config: NgbModalConfig, 
+    private skillService : SkillsService,
     private tokenService : TokenService,
     private modalService: NgbModal,
     private fb: FormBuilder,
@@ -48,6 +49,7 @@ export class SkillsComponent implements OnInit {
     });
   }
 
+//Trae lista de skills
   getSkill(){
     this.httpClient.get<any>('https://backmiportfolio.herokuapp.com/skill/traer').subscribe(
       response =>{
@@ -57,57 +59,7 @@ export class SkillsComponent implements OnInit {
     )
   }
 
-  onSubmit(f: NgForm) {
-    // console.log(f.form.value);
-    const url = 'https://backmiportfolio.herokuapp.com/skill/crear';
-    this.httpClient.post(url, f.value)
-      .subscribe((result) => {
-        this.ngOnInit();
-      });
-    this.modalService.dismissAll();
-  }
-
-  openEdit(targetModal, skill:Skill) {
-    this.modalService.open(targetModal, {
-      centered: true,
-      backdrop: 'static',
-      size: 'lg'
-    });
-    this.editForm.patchValue( {
-      id: skill.id,
-      skill: skill.skill,
-      skillBar: skill.skillBar,
-
-    });
-  }
-
-  onSave() {
-    const editURL = 'https://backmiportfolio.herokuapp.com/skill/' + 'editar/'  + this.editForm.value.id ;
-    this.httpClient.put(editURL, this.editForm.value)
-      .subscribe((results) => {
-        this.ngOnInit();
-        this.modalService.dismissAll();
-      });
-  }
-
-  openDelete(targetModal, skill:Skill) {
-    this.deleteId = skill.id;
-    this.modalService.open(targetModal, {
-      backdrop: 'static',
-      size: 'lg'
-    });
-  }
-
-  onDelete() {
-    const deleteURL = 'https://backmiportfolio.herokuapp.com/skill/' +  'borrar/'+ this.deleteId ;
-    this.httpClient.delete(deleteURL)
-      .subscribe((results) => {
-        this.ngOnInit();
-        this.modalService.dismissAll();
-      });
-  }
-
-
+  //Abrir modal de agregar
   onAgregar(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
     .result.then((result) => {
@@ -117,6 +69,58 @@ export class SkillsComponent implements OnInit {
     });
   }
 
+  //Metodo enviar formulario de agregar
+  onSubmit(f: NgForm) {
+  this.skillService.addSkill(f.value)
+      .subscribe((result) => {
+        this.ngOnInit();
+      });
+    this.modalService.dismissAll();
+  }
+
+  //Abre modal de editar
+  openEdit(targetModal, skill:Skill) {
+    this.modalService.open(targetModal, {
+      centered: true,   //Setea las propiedades del modal
+      backdrop: 'static',
+      size: 'lg'
+    });
+    this.editForm.patchValue( { //Rellena los valores del formulario
+      id: skill.id,
+      skill: skill.skill,
+      skillBar: skill.skillBar,
+
+    });
+  }
+
+  //Guarda lo editado
+  onSave() {
+    this.skillService.updateSkill(this.editForm.value)
+      .subscribe((results) => {
+        this.ngOnInit();
+        this.modalService.dismissAll();
+      });
+  }
+  
+  //Abre modal de eliminar
+  openDelete(targetModal, skill:Skill) {
+    this.deleteId = skill.id;
+    this.modalService.open(targetModal, {
+      backdrop: 'static',
+      size: 'lg'
+    });
+  }
+
+    //Borra
+  onDelete() {
+    this.skillService.deleteSkill(this.deleteId)
+      .subscribe((results) => {
+        this.ngOnInit();
+        this.modalService.dismissAll();
+      });
+  }
+
+//Metodo para cerrar el modal con esc y click fuera del modal
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
