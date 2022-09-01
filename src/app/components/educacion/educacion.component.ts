@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Educacion } from 'src/app/model/educacion.model';
+import { EducacionService } from 'src/app/service/educacion.service';
 import { TokenService } from 'src/app/service/token.service';
 
 
@@ -21,10 +22,10 @@ export class EducacionComponent implements OnInit {
   private deleteId: number;
   isAdmin = false;
   roles: string[];
-  URL = 'https://backmiportfolio.herokuapp.com/';
-  URL2 = 'https://localhost:8080/'
+
 
   constructor(config: NgbModalConfig, 
+    private educacionService:EducacionService,
     private tokenService : TokenService,
     private modalService: NgbModal,
     private fb: FormBuilder,
@@ -65,11 +66,10 @@ export class EducacionComponent implements OnInit {
 
   //Metodo para traer las educaciones
   getEducaciones(){
-    this.httpClient.get<any>('https://backmiportfolio.herokuapp.com/educacion/traer')
-    .subscribe(
+    this.educacionService.getEducacion().subscribe(
       response =>{
         // console.log(response);
-        this.educaciones =response;
+        this.educaciones = response;
       }
     )
   }
