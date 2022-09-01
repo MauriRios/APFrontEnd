@@ -5,7 +5,7 @@
       </div>
       <div class="col-4 col-sm-9 col-lg-10">
       <a *ngIf="isAdmin"
-      (click)="onAgregar(agregarExp)"
+      (click)="onAgregar(content)"
       class="btn btn-edit p-0"
       ><i class="fa-solid fa-plus"></i
       ></a>
@@ -45,76 +45,54 @@
 </div>
   
 <!-- Modal Agregar -->
-  
-<ng-template #agregarExp let-c="close" let-d="dismiss">
-  <div class="modal-header modales">
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Agregar Experiencia</h4>
-    <button
-      type="button"
-      class="btn-close btn"
-      aria-label="Close"
-      (click)="d('Cross click')"
-    ></button>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
   </div>
   <div class="modal-body">
+
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
       <div class="form-group">
-        <label>Empresa:</label>
+        <label>Empresa</label>
         <div class="input-group">
-          <input
-            class="form-control"
-            name="empresa"
-            id="empresa"
-            ngModel
-            required
-          />
+          <input class="form-control" name="empresa" #nombre="ngModel" ngModel required>
         </div>
       </div>
       <div class="form-group">
-        <label for="puesto">Puesto:</label>
+        <label for="institucion">Puesto</label>
         <div class="input-group">
-          <input id="puesto"
-          name="puesto"
-          class="form-control"
-          ngModel />
+          <input id="puesto" name="puesto" class="form-control" ngModel />
         </div>
       </div>
       <div class="form-group">
-        <label for="periodoTrabajado">Periodo:</label>
+        <label for="periodoEstudio">Periodo</label>
         <div class="input-group">
-          <input
-            id="periodoTrabajado"
-            name="periodoTrabajado"
-            class="form-control"
-            ngModel
-          />
+          <input type="text" id="periodoTrabajado" name="periodoTrabajado" class="form-control" ngModel>
         </div>
       </div>
       <div class="form-group">
-        <label for="img">Imagen:</label>
+        <label for="imagen">imagen</label>
         <div class="input-group">
           <input type="file" 
-          alife-file-to-base64 (onFileChanged)="onFileChanged($event)"
-          class="form-control"
+          alife-file-to-base64 (onFileChanged)="onFileChanged($event)" 
           name="img" 
+          class="form-control" 
           ngModel>
           <img src="{{this.editForm.value.img}}" height="100px">
         </div>
       </div>
-      <br />
+      <br>
+
       <div class="modal-footer">
-        <button
-          type="submit"
-          class="btn btn-primary"
-          (click)="c('Save click')"
-        >
-          Agregar
-        </button>
+        <button type="submit" class="btn btn-primary"
+        (click)="c('Save click')">Agregar</button>
       </div>
     </form>
   </div>
 </ng-template>
-
+  
 <!-- Modal Editar -->
 
 <ng-template #editExp let-modal>
@@ -133,19 +111,19 @@
       <div class="form-group">
         <label for="empresa">Empresa:</label>
         <div class="input-group">
-          <input formControlName="empresa" class="form-control" />
+          <input formControlName="empresa" name="empresa" class="form-control" />
         </div>
       </div>
       <div class="form-group">
         <label for="puesto">Puesto:</label>
         <div class="input-group">
-          <input formControlName="puesto" class="form-control" />
+          <input formControlName="puesto" name="puesto" class="form-control" />
         </div>
       </div>
       <div class="form-group">
         <label for="periodoTrabajado">Periodo:</label>
         <div class="input-group">
-          <input formControlName="periodoTrabajado" class="form-control" />
+          <input formControlName="periodoTrabajado" name="periodoTrabajado" class="form-control" />
         </div>
       </div>
       <div class="form-group">
@@ -153,7 +131,7 @@
         <div class="input-group">
           <input 
           type="file" alife-file-to-base64 (onFileChanged)="onFileChanged($event)"
-          formControlName="img"
+          name="img"
           class="form-control" 
           /><img src="{{this.editForm.value.img}}" height="100px">
         </div>
@@ -176,6 +154,8 @@
   </div>
 </ng-template>
 
+<!-- Modal de eliminar -->
+
 <ng-template #expDelete let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Eliminar Experiencia</h4>
@@ -188,7 +168,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <h3>¿Está seguro de eliminar este registro? </h3>
+    <h3 class="text-dark">¿Está seguro de eliminar este registro? </h3>
   </div>
   <div class="modal-footer">
     <button

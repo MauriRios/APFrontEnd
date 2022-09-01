@@ -8,18 +8,17 @@ import { Educacion } from '../model/educacion.model';
 })
 export class EducacionService {
 
-  URL = 'https://backmiportfolio.herokuapp.com/';
+  URL = 'https://backmiportfolio.herokuapp.com/educacion/';
   //URL2 = 'https://localhost:8080/'
 
   
   constructor(private http: HttpClient) { }
 
- 
 
   public getEducacion(): Observable<Educacion[]>  {
     return this.http.get<Educacion[]>(this.URL + 'traer');
   }
-  
+
   public getEducacionId(id: any): Observable<Educacion> {
     return this.http.get<Educacion>(this.URL + 'traer/' + id);
   }
